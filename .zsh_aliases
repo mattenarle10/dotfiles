@@ -33,4 +33,3 @@ alias gl='git log --oneline --graph --decorate --all'  # nice log
 alias gco='git checkout'        # switch branch
 alias gb='git branch'           # list branches
 alias gcb='git checkout -b'     # create + switch new branch
-

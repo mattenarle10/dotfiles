@@ -27,11 +27,17 @@ source $ZSH/oh-my-zsh.sh
 [ -f ~/.matt_greeting.sh ] && source ~/.matt_greeting.sh
 
 # Matt's terminal options
-setopt autocd              # Just type folder name to cd
-setopt correct             # Correct small typos in commands
-setopt histignorealldups   # No duplicate history
-setopt sharehistory        # Share history across tabs
-setopt interactivecomments # Allow comments in terminal
+setopt autocd               # Just type folder name to cd
+setopt correct              # Correct small typos in commands
+setopt sharehistory         # Share history across tabs
+setopt interactivecomments  # Allow comments in terminal
+
+# History tuning
+export HISTSIZE=1000000
+export SAVEHIST=1000000
+setopt HIST_IGNORE_ALL_DUPS   # no duplicate history entries
+setopt HIST_FIND_NO_DUPS      # don't show duplicates when searching history
+setopt HIST_REDUCE_BLANKS     # trim extra blanks in commands
 
 # Prompt (fallback if Powerlevel10k not loaded)
 PROMPT='%F{cyan}Matt%f %F{blue}%~%f %# '
