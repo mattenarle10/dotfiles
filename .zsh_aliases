@@ -18,6 +18,7 @@ alias awscred='nvim ~/.aws/credentials'
 
 # --- Reload & Helpers ---
 alias rld='source ~/.zshrc && echo "Reloaded zsh . . . "'
+alias h='help'
 alias mhelp='cat ~/.matt_greeting.sh'  # show quick commands anytime
 
 # --- Git Shortcuts ---

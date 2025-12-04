@@ -43,5 +43,12 @@ help() {
   printf "  ${BLUE}gconf${RESET}   →  edit greeting (~/.matt_greeting.sh)\n"
   printf "  ${BLUE}sshconf${RESET} →  edit SSH config (~/.ssh/config)\n"
   echo ""
+  printf "${YELLOW}Git & Reload:${RESET}\n"
+  printf "  ${BLUE}gs${RESET}       →  git status\n"
+  printf "  ${BLUE}ga${RESET}       →  git add .\n"
+  printf "  ${BLUE}gl${RESET}       →  git log --oneline --graph --decorate --all\n"
+  printf "  ${BLUE}rld${RESET}      →  reload Zsh config (~/.zshrc)\n"
+  printf "  ${BLUE}mhelp${RESET}    →  show greeting/help banner again\n"
+  echo ""
 }
 

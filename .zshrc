@@ -36,31 +36,9 @@ setopt interactivecomments # Allow comments in terminal
 # Prompt (fallback if Powerlevel10k not loaded)
 PROMPT='%F{cyan}Matt%f %F{blue}%~%f %# '
 
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
 #zsh stuff
 [ -f "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ] && source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
-
-# bun completions
-[ -s "/Users/matt/.bun/_bun" ] && source "/Users/matt/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-#rust 
-source $HOME/.cargo/env
-
-# FVM
-export PATH="/Users/matt/.fvm_flutter/bin:$PATH"
-
-## [Completion]
-## Completion scripts setup. Remove the following line to uninstall
-[[ -f /Users/matt/.dart-cli-completion/zsh-config.zsh ]] && . /Users/matt/.dart-cli-completion/zsh-config.zsh || true
-## [/Completion]
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
