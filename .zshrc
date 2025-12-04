@@ -17,6 +17,11 @@ source $ZSH/oh-my-zsh.sh
 # Load PATHs
 [ -f ~/.zsh_paths ] && source ~/.zsh_paths
 
+# zoxide (smarter directory jumping)
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init zsh)"
+fi
+
 # Load aliases (override Oh My Zsh plugin aliases like gl)
 [ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
 
