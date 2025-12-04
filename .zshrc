@@ -9,10 +9,15 @@ fi
 # Matt's Zsh Configs
 # -------------------------------
 
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME=""
+plugins=(git)
+source $ZSH/oh-my-zsh.sh
+
 # Load PATHs
 [ -f ~/.zsh_paths ] && source ~/.zsh_paths
 
-# Load aliases
+# Load aliases (override Oh My Zsh plugin aliases like gl)
 [ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
 
 # Load functions
@@ -20,11 +25,6 @@ fi
 
 # Banner / greeting
 [ -f ~/.matt_greeting.sh ] && source ~/.matt_greeting.sh
-
-export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME=""
-plugins=(git)
-source $ZSH/oh-my-zsh.sh
 
 # Matt's terminal options
 setopt autocd              # Just type folder name to cd
