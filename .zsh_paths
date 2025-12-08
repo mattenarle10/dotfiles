@@ -2,6 +2,9 @@
 # Matt's Paths
 # -------------------------------
 
+# uv
+[ -f "$HOME/.local/bin/env" ] && source "$HOME/.local/bin/env"
+
 # Flutter
 [ -d "$HOME/FlutterDev/flutter/bin" ] && export PATH="$PATH:$HOME/FlutterDev/flutter/bin"
 
