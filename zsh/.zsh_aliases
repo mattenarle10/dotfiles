@@ -1,0 +1,35 @@
+# ================================
+# 🚀 Matt Configs
+# ================================
+
+# --- Quick Navigation (auto ls with details) ---
+alias ecv='cd ~/ecv && ls -lah'
+alias nextp='cd ~/NextProjects && ls -lah'
+alias cs='open -a "Cursor"'
+alias ws='open -a "Windsurf"'
+# --- Config Shortcuts ---
+alias conf='nvim ~/.zshrc'             # main zsh config
+alias gconf='nvim ~/.matt_greeting.sh' # greeting banner
+alias aconf='nvim ~/.zsh_aliases'      # aliases
+alias sshconf='nvim ~/.ssh/config'
+# --- AWS Config Shortcuts ---
+alias awsconf='nvim ~/.aws/config'
+alias awscred='nvim ~/.aws/credentials'
+
+# --- Reload & Helpers ---
+alias rld='source ~/.zshrc && echo "Reloaded zsh . . . "'
+alias h='help'
+alias mhelp='cat ~/.matt_greeting.sh'  # show quick commands anytime
+
+# --- Git Shortcuts ---
+alias gs='git status'       # compact status
+alias ga='git add .'         # add all changes
+alias ls='tree -C -L 1'
+alias gc='git commit -m'        # commit with message
+alias gca='git commit -am'      # add & commit with message
+alias gp='git push'             # push current branch
+alias gpl='git pull'            # pull latest
+alias gl='git log --oneline --graph --decorate --all'  # nice log
+alias gco='git checkout'        # switch branch
+alias gb='git branch'           # list branches
+alias gcb='git checkout -b'     # create + switch new branch
