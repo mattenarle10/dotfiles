@@ -4,10 +4,9 @@ Personal configuration files for zsh, nvim, and other tools.
 
 ## What's Included
 
-- **zsh**: Shell configuration with Oh My Zsh, Powerlevel10k, zoxide
-- **nvim**: Neovim with LazyVim, LSP, Telescope, Neo-tree, and Lazygit integration
-- **lazygit**: Git TUI configuration
-- **git**: Git configuration (coming soon)
+- **zsh**: Shell configuration with Oh My Zsh, Powerlevel10k, zoxide (.zshrc, .zsh_*, p10k.zsh)
+- **nvim**: Neovim configuration with LSP, Telescope, Neo-tree, and Lazygit integration (.config/nvim/)
+- **lazygit**: Git TUI configuration (.config/lazygit/)
 
 ## Quick Start
 
@@ -31,12 +30,14 @@ cd ~/.dotfiles
 
 2. Use GNU Stow to create symlinks:
 ```bash
-# Install all configs
-stow zsh nvim lazygit
+# Install all configs at once
+stow .
 
-# Or install specific configs
-stow zsh    # Only zsh config
-stow nvim   # Only nvim config
+# This creates symlinks for:
+# ~/.zshrc -> ~/.dotfiles/.zshrc
+# ~/.config/nvim -> ~/.dotfiles/.config/nvim
+# ~/.config/lazygit -> ~/.dotfiles/.config/lazygit
+# etc.
 ```
 
 3. Source your zsh config:
@@ -91,28 +92,29 @@ The first time you open nvim, it will automatically install all plugins.
 To remove symlinks:
 ```bash
 cd ~/.dotfiles
-stow -D zsh nvim lazygit  # Remove all
-stow -D nvim              # Remove only nvim
+stow -D .  # Remove all symlinks
 ```
 
 ## Structure
 
 ```
 ~/.dotfiles/
-├── zsh/           # Zsh configuration files
-│   ├── .zshrc
-│   ├── .zsh_aliases
-│   ├── .zsh_functions
-│   ├── .zsh_paths
-│   ├── .matt_greeting.sh
-│   └── p10k.zsh
-├── nvim/          # Neovim configuration
-│   ├── init.lua
-│   └── lua/
-│       ├── config/
-│       └── plugins/
-└── lazygit/       # Lazygit configuration
-    └── config.yml
+├── .config/
+│   ├── nvim/          # Neovim configuration
+│   │   ├── init.lua
+│   │   └── lua/
+│   │       ├── config/
+│   │       └── plugins/
+│   └── lazygit/       # Lazygit configuration
+│       └── config.yml
+├── .zshrc             # Zsh main config
+├── .zsh_aliases       # Zsh aliases
+├── .zsh_functions     # Zsh functions
+├── .zsh_paths         # PATH configuration
+├── .matt_greeting.sh  # Custom greeting
+├── p10k.zsh           # Powerlevel10k theme
+├── .gitignore
+└── README.md
 ```
 
 ## Credits

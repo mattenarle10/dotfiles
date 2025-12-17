@@ -31,9 +31,7 @@ echo "💾 Backing up existing configs to $BACKUP_DIR..."
 # Stow configs
 echo "🔗 Creating symlinks with GNU Stow..."
 cd ~/.dotfiles
-stow zsh
-stow nvim
-stow lazygit
+stow .
 
 echo ""
 echo "✨ Installation complete!"

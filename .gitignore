@@ -1,0 +1,9 @@
+# Ignore lazy.nvim plugin directory
+.config/nvim/lazy-lock.json
+
+# macOS
+.DS_Store
+
+# Backup files
+*.backup
+*~
