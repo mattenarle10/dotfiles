@@ -15,6 +15,7 @@ vim.o.termguicolors = true   -- True color support
 vim.o.signcolumn = "yes"     -- Always show sign column
 vim.o.updatetime = 250       -- Faster completion
 vim.o.timeoutlen = 300       -- Faster key sequence completion
+vim.o.cmdheight = 0          -- Hide command line when not in use (no bottom space)
 vim.o.undofile = true        -- Persistent undo
 vim.o.swapfile = false       -- No swap files
 vim.o.backup = false         -- No backup files
