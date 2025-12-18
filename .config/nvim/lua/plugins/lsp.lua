@@ -10,6 +10,9 @@ return {
     config = function()
       -- Setup Mason
       require("mason").setup()
+
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
       require("mason-lspconfig").setup({
         ensure_installed = {
           "lua_ls",
@@ -18,6 +21,14 @@ return {
           "rust_analyzer",
         },
         automatic_installation = true,
+        handlers = {
+          -- Default handler for all servers
+          function(server_name)
+            require("lspconfig")[server_name].setup({
+              capabilities = capabilities,
+            })
+          end,
+        },
       })
 
       -- LSP keymaps
@@ -36,15 +47,6 @@ return {
           map("<leader>ca", vim.lsp.buf.code_action, "Code action")
         end,
       })
-
-      -- Setup language servers
-      local lspconfig = require("lspconfig")
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-      lspconfig.lua_ls.setup({ capabilities = capabilities })
-      lspconfig.ts_ls.setup({ capabilities = capabilities })
-      lspconfig.pyright.setup({ capabilities = capabilities })
-      lspconfig.rust_analyzer.setup({ capabilities = capabilities })
     end,
   },
   {
