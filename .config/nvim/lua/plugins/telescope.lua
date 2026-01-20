@@ -19,10 +19,16 @@ return {
 
     -- Keymaps
     local map = vim.keymap.set
+
+    -- Standard leader keymaps
     map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find files" })
     map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Find text" })
     map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Find buffers" })
     map("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Find help" })
     map("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Recent files" })
+
+    -- VSCode-style Ctrl keymaps (reliable in all terminals)
+    map("n", "<C-p>", "<cmd>Telescope find_files<cr>", { desc = "Find files (Ctrl+P)" })
+    map("n", "<C-S-f>", "<cmd>Telescope live_grep<cr>", { desc = "Find in files (Ctrl+Shift+F)" })
   end,
 }
