@@ -70,12 +70,16 @@ The first time you open nvim, it will automatically install all plugins.
 
 ### File Navigation
 - `Space + e` - Toggle file explorer
-- `Space + ff` - Find files (fuzzy)
-- `Space + fg` - Find text in files
+- `Space + ff` - Find files (fuzzy) *(includes hidden files)*
+- `Space + fg` - Live grep (search text in files) *(includes hidden files)*
+- `Space + fw` - Find word under cursor
 - `Space + fb` - Find buffers
 
 ### Git
 - `Space + gg` - Open LazyGit
+- `Space + gb` - Switch branches (Telescope)
+- `Space + gs` - Git status (Telescope)
+- `Space + gc` - Git commits (Telescope)
 
 ### LSP
 - `gd` - Go to definition
