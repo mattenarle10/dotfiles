@@ -50,7 +50,7 @@ return {
       map('n', '<leader>ghR', gs.reset_buffer, {desc="Reset buffer"})
       map('n', '<leader>ghp', gs.preview_hunk, {desc="Preview hunk"})
       map('n', '<leader>ghb', function() gs.blame_line{full=true} end, {desc="Blame line"})
-      map('n', '<leader>gb', gs.toggle_current_line_blame, {desc="Toggle line blame"})
+      map('n', '<leader>gl', gs.toggle_current_line_blame, {desc="Toggle line blame"})
       map('n', '<leader>ghd', gs.diffthis, {desc="Diff this"})
       map('n', '<leader>ghD', function() gs.diffthis('~') end, {desc="Diff this ~"})
 
