@@ -129,10 +129,16 @@ Key parts:
 This is your search tool.
 
 **Try all these:**
-1. `Space + ff` - Find files by name
-2. `Space + fg` - Search text in all files
-3. `Space + fb` - Find open buffers
-4. `Space + fr` - Recent files
+1. `Space + ff` - Find files by name *(includes hidden files)*
+2. `Space + fg` - Live grep (search text in all files) *(includes hidden files)*
+3. `Space + fw` - Find word under cursor
+4. `Space + fb` - Find open buffers
+5. `Space + fr` - Recent files
+
+**Git pickers (no LazyGit needed):**
+- `Space + gb` - Switch branches
+- `Space + gs` - Git status
+- `Space + gc` - Git commits
 
 **Inside telescope:**
 - Type to filter results
