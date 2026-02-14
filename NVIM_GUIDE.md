@@ -220,6 +220,41 @@ map("n", "<leader>t", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
 
 Now `Space + t` shows all TODO comments!
 
+## ✂️ Text Selection & Yanking (Copying)
+
+Your config has `clipboard = "unnamedplus"` so everything you yank goes to system clipboard!
+
+### Visual Selection (Highlighting)
+| Keys | Action |
+|------|--------|
+| `v` | Start character selection |
+| `V` | Select whole line |
+| `Ctrl+v` | Block/column select |
+| `viw` | Select word |
+| `vib` | Select inside `()` |
+| `viB` | Select inside `{}` |
+| `vi"` | Select inside quotes |
+| `vip` | Select paragraph |
+| `vit` | Select inside HTML tag |
+| `S` | Flash Treesitter - smart select code blocks |
+
+### Yank (Copy)
+| Keys | Action |
+|------|--------|
+| `y` | Yank selection (copies to system clipboard) |
+| `yy` | Yank whole line |
+| `yiw` | Yank word |
+| `yi"` | Yank inside quotes |
+| `yip` | Yank paragraph |
+| `yap` | Yank paragraph including whitespace |
+
+### Surround (nvim-surround)
+| Keys | Action |
+|------|--------|
+| `ysiw"` | Surround word with quotes |
+| `ds"` | Delete surrounding quotes |
+| `cs"'` | Change `"` to `'` |
+
 ## 🔥 Pro Tips
 
 1. **Which-key is your friend** - Press `Space` and wait to see all shortcuts
