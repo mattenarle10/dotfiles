@@ -1,12 +1,13 @@
 # Matt's Dotfiles
 
-Personal configuration files for zsh, nvim, and other tools.
+Personal configuration files for zsh, nvim, Claude Code, and other tools.
 
 ## What's Included
 
 - **zsh**: Shell configuration with Oh My Zsh, Powerlevel10k, zoxide (`.config/zsh/`)
 - **nvim**: Neovim configuration with LSP, Telescope, Neo-tree, and Lazygit integration (`.config/nvim/`)
 - **lazygit**: Git TUI configuration (`.config/lazygit/`)
+- **Claude Code**: Global settings, plugins, hooks, and instructions (`.claude/`)
 
 **📖 New to Nvim config?** Check out [NVIM_GUIDE.md](NVIM_GUIDE.md) for a step-by-step learning path!
 
@@ -39,6 +40,8 @@ stow .
 # ~/.zshrc -> ~/.dotfiles/.zshrc
 # ~/.config/nvim -> ~/.dotfiles/.config/nvim
 # ~/.config/lazygit -> ~/.dotfiles/.config/lazygit
+# ~/.claude/settings.json -> ~/.dotfiles/.claude/settings.json
+# ~/.claude/hooks/* -> ~/.dotfiles/.claude/hooks/*
 # etc.
 ```
 
@@ -105,15 +108,22 @@ stow -D .  # Remove all symlinks
 
 ```
 ~/.dotfiles/
+├── .claude/
+│   ├── CLAUDE.md          # Global instructions
+│   ├── RTK.md             # RTK token optimizer config
+│   ├── settings.json      # Plugins, hooks, effort level
+│   ├── settings.local.json# Local permissions
+│   └── hooks/
+│       └── rtk-rewrite.sh # RTK bash command rewriter
 ├── .config/
-│   ├── nvim/          # Neovim configuration
+│   ├── nvim/              # Neovim configuration
 │   │   ├── init.lua
 │   │   └── lua/
 │   │       ├── config/
 │   │       └── plugins/
-│   ├── lazygit/       # Lazygit configuration
+│   ├── lazygit/           # Lazygit configuration
 │   │   └── config.yml
-│   └── zsh/           # Zsh configuration
+│   └── zsh/               # Zsh configuration
 │       ├── .zshrc
 │       ├── .zsh_aliases
 │       ├── .zsh_functions
@@ -121,7 +131,7 @@ stow -D .  # Remove all symlinks
 │       ├── .matt_greeting.sh
 │       └── p10k.zsh
 ├── .gitignore
-├── NVIM_GUIDE.md      # Learn your nvim config!
+├── NVIM_GUIDE.md          # Learn your nvim config!
 └── README.md
 ```
 
