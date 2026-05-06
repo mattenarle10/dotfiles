@@ -35,6 +35,8 @@ brew install \
   zsh-autosuggestions \
   powerlevel10k \
   figlet \
+  gh \
+  awscli \
   tree
 
 # ── 4. Oh My Zsh ────────────────────────────────────────────────────────────
