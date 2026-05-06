@@ -34,12 +34,13 @@ brew install \
   zoxide \
   zsh-autosuggestions \
   powerlevel10k \
+  figlet \
   tree
 
 # ── 4. Oh My Zsh ────────────────────────────────────────────────────────────
-if [ ! -d "$HOME/.oh-my-zsh" ]; then
+if [ ! -f "$HOME/.oh-my-zsh/oh-my-zsh.sh" ]; then
   echo "→ Installing Oh My Zsh..."
-  RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  RUNZSH=no CHSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 else
   echo "✓ Oh My Zsh already installed"
 fi
@@ -85,10 +86,12 @@ else
 fi
 
 # ── 10. Clear stow conflicts ────────────────────────────────────────────────
-# These tools create default configs on install — remove them so stow can
+# These tools/installers create default configs — remove them so stow can
 # place our symlinks cleanly.
+mkdir -p "$HOME/.config/ghostty"
 for conflict in \
   "$HOME/.config/ghostty/config" \
+  "$HOME/.claude/settings.json" \
   "$HOME/.zshrc"
 do
   if [ -f "$conflict" ] && [ ! -L "$conflict" ]; then
