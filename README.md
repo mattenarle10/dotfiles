@@ -12,51 +12,56 @@ Personal configuration files for zsh, nvim, Claude Code, and other tools.
 
 **📖 New to Nvim config?** Check out [NVIM_GUIDE.md](NVIM_GUIDE.md) for a step-by-step learning path!
 
-## Quick Start
+## Quick Start (Fresh Mac)
 
-### Prerequisites
+### One-liner setup
 
 ```bash
-# Install Homebrew (if not already installed)
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# 1. Install Xcode CLI tools first (needed for git)
+xcode-select --install
 
-# Install required tools
-brew install stow neovim lazygit ghostty
-```
-
-### Installation
-
-1. Clone this repository:
-```bash
+# 2. Clone dotfiles
 git clone https://github.com/mattenarle10/dotfiles.git ~/.dotfiles
-cd ~/.dotfiles
+
+# 3. Run the install script — handles everything else
+cd ~/.dotfiles && bash install.sh
 ```
 
-2. Use GNU Stow to create symlinks:
-```bash
-# Install all configs at once
-stow .
+The `install.sh` script automatically installs and configures:
+- Homebrew
+- Neovim, LazyGit, Ghostty, zoxide, zsh-autosuggestions, Powerlevel10k
+- Oh My Zsh
+- NVM (Node.js)
+- Bun, pnpm
+- Rust
+- uv (Python)
+- Stows all dotfiles into place
 
-# This creates symlinks for:
+### What stow sets up
+
+```bash
 # ~/.zshrc -> ~/.dotfiles/.zshrc
 # ~/.config/nvim -> ~/.dotfiles/.config/nvim
 # ~/.config/lazygit -> ~/.dotfiles/.config/lazygit
+# ~/.config/ghostty/config -> ~/.dotfiles/.config/ghostty/config
 # ~/.claude/settings.json -> ~/.dotfiles/.claude/settings.json
 # ~/.claude/hooks/* -> ~/.dotfiles/.claude/hooks/*
-# ~/.config/ghostty/config -> ~/.dotfiles/.config/ghostty/config
 # etc.
 ```
 
-3. Source your zsh config:
+### After install
+
 ```bash
-source ~/.zshrc
+source ~/.zshrc       # reload shell
+nvim                  # opens nvim — plugins install automatically on first launch
+p10k configure        # reconfigure prompt if needed
 ```
 
-4. Open nvim to install plugins:
+### Install Claude Code
+
 ```bash
-nvim
+npm install -g @anthropic-ai/claude-code
 ```
-The first time you open nvim, it will automatically install all plugins.
 
 ## Nvim Keybindings (Simple!)
 
