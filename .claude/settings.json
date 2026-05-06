@@ -25,7 +25,20 @@
     "context7@claude-plugins-official": true,
     "github@claude-plugins-official": true,
     "feature-dev@claude-plugins-official": true,
-    "playwright@claude-plugins-official": true
+    "playwright@claude-plugins-official": true,
+    "expo@claude-plugins-official": true
   },
-  "effortLevel": "high"
+  "extraKnownMarketplaces": {
+    "expo-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "expo/skills"
+      }
+    }
+  },
+  "effortLevel": "high",
+  "editorMode": "vim",
+  "verbose": true,
+  "agentPushNotifEnabled": true,
+  "model": "sonnet"
 }

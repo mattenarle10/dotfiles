@@ -7,7 +7,8 @@ Personal configuration files for zsh, nvim, Claude Code, and other tools.
 - **zsh**: Shell configuration with Oh My Zsh, Powerlevel10k, zoxide (`.config/zsh/`)
 - **nvim**: Neovim configuration with LSP, Telescope, Neo-tree, and Lazygit integration (`.config/nvim/`)
 - **lazygit**: Git TUI configuration (`.config/lazygit/`)
-- **Claude Code**: Global settings, plugins, hooks, and instructions (`.claude/`)
+- **ghostty**: Terminal emulator — transparency, blur, font, keybinds, tab behavior (`.config/ghostty/`)
+- **Claude Code**: Global settings, plugins (expo, vercel, playwright, context7, etc.), RTK hooks, and instructions (`.claude/`)
 
 **📖 New to Nvim config?** Check out [NVIM_GUIDE.md](NVIM_GUIDE.md) for a step-by-step learning path!
 
@@ -20,7 +21,7 @@ Personal configuration files for zsh, nvim, Claude Code, and other tools.
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Install required tools
-brew install stow neovim lazygit
+brew install stow neovim lazygit ghostty
 ```
 
 ### Installation
@@ -42,6 +43,7 @@ stow .
 # ~/.config/lazygit -> ~/.dotfiles/.config/lazygit
 # ~/.claude/settings.json -> ~/.dotfiles/.claude/settings.json
 # ~/.claude/hooks/* -> ~/.dotfiles/.claude/hooks/*
+# ~/.config/ghostty/config -> ~/.dotfiles/.config/ghostty/config
 # etc.
 ```
 
@@ -123,6 +125,8 @@ stow -D .  # Remove all symlinks
 │   │       └── plugins/
 │   ├── lazygit/           # Lazygit configuration
 │   │   └── config.yml
+│   ├── ghostty/           # Ghostty terminal config
+│   │   └── config
 │   └── zsh/               # Zsh configuration
 │       ├── .zshrc
 │       ├── .zsh_aliases

@@ -5,4 +5,5 @@ if [[ -f ~/.config/zsh/.zshrc ]]; then
   source ~/.config/zsh/.zshrc
 fi
 
-alias claude-mem='bun "/Users/matt/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
+alias claude-mem='bun "$HOME/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
+export PATH="$HOME/.maestro/bin/maestro/bin:$PATH"
