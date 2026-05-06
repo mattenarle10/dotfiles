@@ -84,7 +84,20 @@ else
   echo "✓ uv already installed"
 fi
 
-# ── 10. Stow dotfiles ───────────────────────────────────────────────────────
+# ── 10. Clear stow conflicts ────────────────────────────────────────────────
+# These tools create default configs on install — remove them so stow can
+# place our symlinks cleanly.
+for conflict in \
+  "$HOME/.config/ghostty/config" \
+  "$HOME/.zshrc"
+do
+  if [ -f "$conflict" ] && [ ! -L "$conflict" ]; then
+    echo "→ Backing up existing $conflict → ${conflict}.bak"
+    mv "$conflict" "${conflict}.bak"
+  fi
+done
+
+# ── 11. Stow dotfiles ───────────────────────────────────────────────────────
 DOTFILES="$HOME/.dotfiles"
 if [ ! -d "$DOTFILES" ]; then
   echo "→ Cloning dotfiles..."
