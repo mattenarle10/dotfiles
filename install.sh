@@ -40,9 +40,13 @@ brew install \
   tree
 
 # ── 4. Oh My Zsh ────────────────────────────────────────────────────────────
+# Install BEFORE stowing — the installer always overwrites ~/.zshrc, which
+# would clobber our symlink if stow ran first.
 if [ ! -f "$HOME/.oh-my-zsh/oh-my-zsh.sh" ]; then
   echo "→ Installing Oh My Zsh..."
   RUNZSH=no CHSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  # Remove the .zshrc the installer just created so stow can place our symlink
+  rm -f "$HOME/.zshrc"
 else
   echo "✓ Oh My Zsh already installed"
 fi

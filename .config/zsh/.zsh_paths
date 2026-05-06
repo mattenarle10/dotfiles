@@ -2,6 +2,13 @@
 # Matt's Paths
 # -------------------------------
 
+# Homebrew
+export HOMEBREW_PREFIX="${HOMEBREW_PREFIX:-/opt/homebrew}"
+export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH"
+
+# Local bin (claude, uv, etc.)
+export PATH="$HOME/.local/bin:$PATH"
+
 # uv
 [ -f "$HOME/.local/bin/env" ] && source "$HOME/.local/bin/env"
 
