@@ -1,13 +1,12 @@
 #!/bin/zsh
 
-# Show greeting only once per shell session
-if [[ -n "$MATT_GREETING_SHOWN" ]]; then
-  return
-fi
+# Show greeting only on new window/tab (not on clear or subshells)
+[[ $SHLVL -gt 1 ]] && return
+[[ -n "$MATT_GREETING_SHOWN" ]] && return
 export MATT_GREETING_SHOWN=1
 
-# Animated rainbow MATT banner
-figlet -f chunky "MATT" | lolcat -a -d 1
+# Rainbow MATT banner
+figlet -f chunky "MATT" | lolcat
 
 # fastfetch system info
 fastfetch --logo none \
