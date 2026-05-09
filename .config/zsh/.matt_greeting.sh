@@ -1,16 +1,23 @@
 #!/bin/zsh
 
-# Show greeting only on new window/tab (not on clear or subshells)
+# Show only on new window/tab
 [[ $SHLVL -gt 1 ]] && return
 [[ -n "$MATT_GREETING_SHOWN" ]] && return
 export MATT_GREETING_SHOWN=1
 
-# Rainbow MATT banner
-figlet -f chunky "MATT" | lolcat -f
+# Rainbow animated MATT banner
+figlet -f chunky "MATT" | lolcat -f -a -d 2
 
-# fastfetch system info
-fastfetch --logo none \
-  --structure "Title:Separator:OS:Host:Kernel:Uptime:Shell:Terminal:CPU:Memory:LocalIP" \
-  --separator " → "
+# Typewriter "hey matt 👋"
+_typewriter() {
+  local msg="$1"
+  for (( i=1; i<=${#msg}; i++ )); do
+    printf "${msg[i]}"
+    sleep 0.04
+  done
+  echo ""
+}
 
-echo ""
+printf "\033[1;36m"
+_typewriter "  hey matt 👋  have a good one!"
+printf "\033[0m\n"
