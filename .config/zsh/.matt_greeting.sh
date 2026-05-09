@@ -5,17 +5,17 @@
 [[ -n "$MATT_GREETING_SHOWN" ]] && return
 export MATT_GREETING_SHOWN=1
 
-# Rainbow animated MATT banner
-figlet -f chunky "MATT" | lolcat -f -a -d 2
+# 3D rainbow animated banner — run in subshell with TTY so lolcat -a works
+figlet -f larry3d "MATT" | lolcat -f -a -d 3 -s 50
 
-# Typewriter "hey matt 👋"
+# Typewriter effect
 _typewriter() {
   local msg="$1"
   for (( i=1; i<=${#msg}; i++ )); do
     printf "${msg[i]}"
-    sleep 0.01
+    sleep 0.02
   done
-  echo ""
+  printf "\n\n"
 }
 
 _typewriter "  🦀 time to ship."
