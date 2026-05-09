@@ -5,7 +5,7 @@
 [[ -n "$MATT_GREETING_SHOWN" ]] && return
 export MATT_GREETING_SHOWN=1
 
-# 3D rainbow animated banner — run in subshell with TTY so lolcat -a works
-figlet -f larry3d "MATT" | lolcat -f
-
-echo "\n  🦀 time to ship.\n"
+echo ""
+printf "  " && figlet -f larry3d "MATT" | sed 's/^/  /' | lolcat -f
+echo ""
+printf "  🦀 time to ship.\n\n"

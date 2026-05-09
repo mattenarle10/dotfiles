@@ -13,9 +13,9 @@ window-title-font-family = "MesloLGS Nerd Font Mono"
 # Window / rendering
 window-vsync = true
 
-# Window padding (remove margins)
-window-padding-x = 0
-window-padding-y = 0
+# Window padding
+window-padding-x = 8
+window-padding-y = 6
 
 # New tab position (current = next to active tab, end = at the end)
 window-new-tab-position = current
