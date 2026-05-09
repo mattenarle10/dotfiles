@@ -21,10 +21,23 @@ alias rld='source $ZDOTDIR/.zshrc && echo "Reloaded zsh . . . "'
 alias h='help'
 alias mhelp='source ~/.config/zsh/.matt_greeting.sh'
 
+# --- bat (better cat) ---
+alias cat='bat --paging=never'
+alias catp='bat'                    # cat with paging
+
+# --- eza (better ls) ---
+alias ls='eza --icons'
+alias ll='eza --icons -lh --git'    # detailed + git status
+alias la='eza --icons -lah --git'   # detailed + hidden files
+alias lt='eza --icons --tree -L 2'  # tree view 2 levels
+
+# --- fzf shortcuts ---
+alias fh='history | fzf'            # fuzzy search history
+alias ff='fzf --preview "bat --color=always {}"'  # fuzzy find file with preview
+
 # --- Git Shortcuts ---
 alias gs='git status'       # compact status
 alias ga='git add .'         # add all changes
-alias ls='tree -C -L 1'
 alias gc='git commit -m'        # commit with message
 alias gca='git commit -am'      # add & commit with message
 alias gp='git push'             # push current branch

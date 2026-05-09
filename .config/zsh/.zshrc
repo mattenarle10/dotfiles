@@ -47,6 +47,11 @@ setopt HIST_REDUCE_BLANKS     # trim extra blanks in commands
 # Prompt (fallback if Powerlevel10k not loaded)
 PROMPT='%F{cyan}Matt%f %F{blue}%~%f %# '
 
+# fzf shell integration (ctrl+r = fuzzy history, ctrl+t = fuzzy file search)
+[ -f "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh" ] && source "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
+[ -f "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh" ] && source "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh"
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+
 #zsh stuff
 [ -f "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ] && source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 [ -f "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ] && source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
