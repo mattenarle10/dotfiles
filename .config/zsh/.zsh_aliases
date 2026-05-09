@@ -3,8 +3,10 @@
 # ================================
 
 # --- Quick Navigation (auto ls with details) ---
-alias ecv='cd ~/ecv && ls -lah'
-alias nextp='cd ~/NextProjects && ls -lah'
+alias ecv='cd ~/dev/ecv && ll'
+alias lakbaygo='cd ~/dev/lakbaygo && ll'
+alias ark='cd ~/dev/ark && ll'
+alias betterbacolod='cd ~/dev/betterbacolod && ll'
 alias cs='open -a "Cursor"'
 alias ws='open -a "Windsurf"'
 # --- Config Shortcuts ---
