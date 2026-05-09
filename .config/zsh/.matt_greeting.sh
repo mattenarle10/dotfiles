@@ -13,11 +13,9 @@ _typewriter() {
   local msg="$1"
   for (( i=1; i<=${#msg}; i++ )); do
     printf "${msg[i]}"
-    sleep 0.04
+    sleep 0.01
   done
   echo ""
 }
 
-printf "\033[1;36m"
-_typewriter "  hey matt 👋  have a good one!"
-printf "\033[0m\n"
+_typewriter "  hey matt 👋  have a good one!" | lolcat -f
