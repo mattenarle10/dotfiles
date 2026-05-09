@@ -3,7 +3,7 @@ theme = "citruszest"
 font-family = "MesloLGS Nerd Font Mono"
 background-opacity = 0.91
 background-opacity-cells = true
-background-blur = 20
+background-blur = 10
 cursor-style = bar
 
 # Window title
