@@ -28,27 +28,53 @@ extract () {
 }
 
 help() {
-  BLUE='\033[1;34m'
+  figlet -f small "Matt's CLI" | lolcat
+
+  CYAN='\033[1;36m'
   YELLOW='\033[1;33m'
   RESET='\033[0m'
 
   echo ""
-  printf "${YELLOW}Quick Commands & Shortcuts:${RESET}\n"
-  printf "  ${BLUE}ecv${RESET}     →  cd ~/ecv\n"
-  printf "  ${BLUE}nextp${RESET}   →  cd ~/NextProjects\n"
-  printf "  ${BLUE}expod${RESET}   →  cd ~/ExpoDev\n"
-  printf "  ${BLUE}flutd${RESET}   →  cd ~/FlutterDev\n"
-  printf "  ${BLUE}conf${RESET}    →  edit Zsh config (~/.zshrc)\n"
-  printf "  ${BLUE}aconf${RESET}   →  edit aliases (~/.zsh_aliases)\n"
-  printf "  ${BLUE}gconf${RESET}   →  edit greeting (~/.matt_greeting.sh)\n"
-  printf "  ${BLUE}sshconf${RESET} →  edit SSH config (~/.ssh/config)\n"
+  printf "${YELLOW}  Projects${RESET}\n"
+  printf "  ${CYAN}ecv${RESET}           →  ~/dev/ecv\n"
+  printf "  ${CYAN}lakbaygo${RESET}      →  ~/dev/lakbaygo\n"
+  printf "  ${CYAN}ark${RESET}           →  ~/dev/ark\n"
+  printf "  ${CYAN}betterbacolod${RESET} →  ~/dev/betterbacolod\n"
+
   echo ""
-  printf "${YELLOW}Git & Reload:${RESET}\n"
-  printf "  ${BLUE}gs${RESET}       →  git status\n"
-  printf "  ${BLUE}ga${RESET}       →  git add .\n"
-  printf "  ${BLUE}gl${RESET}       →  git log --oneline --graph --decorate --all\n"
-  printf "  ${BLUE}rld${RESET}      →  reload Zsh config (~/.zshrc)\n"
-  printf "  ${BLUE}mhelp${RESET}    →  show greeting/help banner again\n"
+  printf "${YELLOW}  Git${RESET}\n"
+  printf "  ${CYAN}gs${RESET}   →  git status\n"
+  printf "  ${CYAN}ga${RESET}   →  git add .\n"
+  printf "  ${CYAN}gc${RESET}   →  git commit -m\n"
+  printf "  ${CYAN}gp${RESET}   →  git push\n"
+  printf "  ${CYAN}gl${RESET}   →  git log graph\n"
+  printf "  ${CYAN}gco${RESET}  →  git checkout\n"
+  printf "  ${CYAN}gcb${RESET}  →  git checkout -b\n"
+
+  echo ""
+  printf "${YELLOW}  Files & Search${RESET}\n"
+  printf "  ${CYAN}ll${RESET}     →  detailed list (eza + git status)\n"
+  printf "  ${CYAN}la${RESET}     →  list all including hidden\n"
+  printf "  ${CYAN}lt${RESET}     →  tree view 2 levels\n"
+  printf "  ${CYAN}cat${RESET}    →  syntax highlighted (bat)\n"
+  printf "  ${CYAN}ff${RESET}     →  fuzzy file finder with preview\n"
+  printf "  ${CYAN}fh${RESET}     →  fuzzy history search\n"
+  printf "  ${CYAN}ctrl+r${RESET} →  fuzzy history in prompt\n"
+  printf "  ${CYAN}ctrl+t${RESET} →  fuzzy file paste\n"
+
+  echo ""
+  printf "${YELLOW}  Config${RESET}\n"
+  printf "  ${CYAN}conf${RESET}    →  edit zshrc\n"
+  printf "  ${CYAN}aconf${RESET}   →  edit aliases\n"
+  printf "  ${CYAN}gconf${RESET}   →  edit greeting\n"
+  printf "  ${CYAN}sshconf${RESET} →  edit SSH config\n"
+  printf "  ${CYAN}rld${RESET}     →  reload zsh\n"
+  printf "  ${CYAN}mhelp${RESET}   →  show this again\n"
+
+  echo ""
+  printf "${YELLOW}  Tools${RESET}\n"
+  printf "  ${CYAN}rtk gain${RESET}     →  token savings stats\n"
+  printf "  ${CYAN}rtk discover${RESET} →  missed savings opportunities\n"
   echo ""
 }
 

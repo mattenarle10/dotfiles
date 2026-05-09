@@ -6,19 +6,12 @@ if [[ -n "$MATT_GREETING_SHOWN" ]]; then
 fi
 export MATT_GREETING_SHOWN=1
 
-# Colors
-BLUE='\033[1;34m'
-YELLOW='\033[1;33m'
-RESET='\033[0m'
+# Animated rainbow MATT banner
+figlet -f chunky "MATT" | lolcat -a -d 1
 
-# Banner
+# fastfetch system info
+fastfetch --logo none \
+  --structure "Title:Separator:OS:Host:Kernel:Uptime:Shell:Terminal:CPU:Memory:LocalIP" \
+  --separator " → "
+
 echo ""
-printf "${BLUE}"
-figlet -f chunky "MATT"
-printf "${RESET}\n"
-
-# Minimal welcome
-printf "${YELLOW}Welcome back, Matt!${RESET}\n"
-printf "Type ${BLUE}help${RESET} to see quick commands.\n"
-echo ""
-
