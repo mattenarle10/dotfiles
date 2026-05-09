@@ -6,7 +6,7 @@
 export MATT_GREETING_SHOWN=1
 
 # Rainbow MATT banner
-figlet -f chunky "MATT" | lolcat
+figlet -f chunky "MATT" | lolcat -f
 
 # fastfetch system info
 fastfetch --logo none \
