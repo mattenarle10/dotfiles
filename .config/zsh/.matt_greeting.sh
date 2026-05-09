@@ -18,4 +18,4 @@ _typewriter() {
   echo ""
 }
 
-_typewriter "  hey matt 👋  have a good one!" | lolcat -f
+_typewriter "  🦀 time to ship."
