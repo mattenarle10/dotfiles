@@ -93,6 +93,17 @@ else
   echo "✓ pnpm already installed"
 fi
 
+# ── 7a. Global npm tools (LSPs, CLIs) ───────────────────────────────────────
+# Source NVM so npm is on PATH for this shell session.
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+if command -v npm &>/dev/null; then
+  echo "→ Installing global npm tools (typescript-language-server, etc)..."
+  npm install -g typescript typescript-language-server
+else
+  echo "⚠ npm not found — skipping global npm tools (run 'nvm install --lts' then re-run this script)"
+fi
+
 # ── 8. Rust ─────────────────────────────────────────────────────────────────
 if ! command -v rustup &>/dev/null; then
   echo "→ Installing Rust..."
