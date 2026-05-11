@@ -14,6 +14,8 @@ gui:
   showFileTree: true
   # Border style
   border: rounded
+  # Disable mouse — keeps keyboard nav reliable in Ghostty
+  mouseEvents: false
 git:
   pagers:
     - colorArg: always

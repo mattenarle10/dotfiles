@@ -26,13 +26,20 @@
     "playwright@claude-plugins-official": true,
     "expo@claude-plugins-official": true,
     "atlassian@claude-plugins-official": true,
-    "superpowers@claude-plugins-official": true
+    "superpowers@claude-plugins-official": true,
+    "everything-claude-code@everything-claude-code": true
   },
   "extraKnownMarketplaces": {
     "expo-plugins": {
       "source": {
         "source": "github",
         "repo": "expo/skills"
+      }
+    },
+    "everything-claude-code": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/affaan-m/everything-claude-code.git"
       }
     }
   },
