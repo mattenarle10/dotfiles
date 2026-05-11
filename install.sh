@@ -37,6 +37,7 @@ brew install \
   gh \
   awscli \
   git-delta \
+  hashicorp/tap/terraform \
   tree
 
 # ── 4. Oh My Zsh ────────────────────────────────────────────────────────────
