@@ -8,30 +8,23 @@ gui:
       - white
     selectedLineBgColor:
       - blue
-
   # Show command log
   showCommandLog: false
-
   # Show file tree
   showFileTree: true
-
   # Border style
   border: rounded
-
 git:
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never
-
+  pagers:
+    - colorArg: always
+      pager: delta --dark --paging=never
   # Auto fetch
   autoFetch: true
   autoRefresh: true
-
   # Commit message editor
   commitMessage:
     autoWrapCommitMessage: true
     autoWrapWidth: 72
-
 # Custom commands
 customCommands:
   - key: 'C'
@@ -39,8 +32,7 @@ customCommands:
     description: 'commit with commitizen'
     context: 'files'
     loadingText: 'opening commitizen commit tool'
-    subprocess: true
-
+    output: terminal
 # Keybindings
 keybinding:
   universal:
@@ -84,7 +76,7 @@ keybinding:
     scrollDownMain-alt1: 'J'
     scrollUpMain-alt2: '<c-u>'
     scrollDownMain-alt2: '<c-d>'
-    executeCustomCommand: ':'
+    executeShellCommand: ':'
     createRebaseOptionsMenu: 'm'
     pushFiles: 'P'
     pullFiles: 'p'

@@ -37,6 +37,7 @@ brew install \
   figlet \
   gh \
   awscli \
+  git-delta \
   tree
 
 # ── 4. Oh My Zsh ────────────────────────────────────────────────────────────
