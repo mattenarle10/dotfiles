@@ -38,6 +38,7 @@ brew install \
   awscli \
   git-delta \
   hashicorp/tap/terraform \
+  firebase-cli \
   tree
 
 # ── 4. Oh My Zsh ────────────────────────────────────────────────────────────
