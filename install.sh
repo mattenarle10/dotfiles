@@ -29,7 +29,6 @@ brew install \
   git \
   stow \
   neovim \
-  lazygit \
   ghostty \
   zoxide \
   zsh-autosuggestions \
@@ -66,6 +65,22 @@ if ! command -v bun &>/dev/null; then
   curl -fsSL https://bun.sh/install | bash
 else
   echo "✓ Bun already installed"
+fi
+
+# ── 6a. lazygitrs (Rust fork of lazygit) ────────────────────────────────────
+if ! command -v lazygitrs &>/dev/null; then
+  echo "→ Installing lazygitrs..."
+  bun install -g lazygitrs
+fi
+# Wrapper so anything calling `lazygit` (terminal, lazygit.nvim) hits lazygitrs
+if [ ! -f "$HOME/.local/bin/lazygit" ]; then
+  echo "→ Creating lazygit → lazygitrs wrapper..."
+  mkdir -p "$HOME/.local/bin"
+  cat > "$HOME/.local/bin/lazygit" <<'WRAP'
+#!/usr/bin/env bash
+exec lazygitrs "$@"
+WRAP
+  chmod +x "$HOME/.local/bin/lazygit"
 fi
 
 # ── 7. pnpm ─────────────────────────────────────────────────────────────────
