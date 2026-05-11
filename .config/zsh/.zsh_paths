@@ -6,6 +6,9 @@
 export HOMEBREW_PREFIX="${HOMEBREW_PREFIX:-/opt/homebrew}"
 export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH"
 
+# Secrets (gitignored — tokens, API keys)
+[ -f ~/.config/zsh/.zsh_secrets ] && source ~/.config/zsh/.zsh_secrets
+
 # Local bin (claude, uv, etc.)
 export PATH="$HOME/.local/bin:$PATH"
 
