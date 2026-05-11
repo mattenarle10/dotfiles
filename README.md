@@ -5,8 +5,8 @@ Personal configuration files for zsh, nvim, Claude Code, and other tools.
 ## What's Included
 
 - **zsh**: Shell configuration with Oh My Zsh, Powerlevel10k, zoxide (`.config/zsh/`)
-- **nvim**: Neovim configuration with LSP, Telescope, Neo-tree, and Lazygit integration (`.config/nvim/`)
-- **lazygit**: Git TUI configuration (`.config/lazygit/`)
+- **nvim**: LSP, Telescope, Neo-tree, conform.nvim formatter, Harpoon, lazygit integration (`.config/nvim/`)
+- **lazygit**: Git TUI configuration — used by `lazygitrs` via wrapper (`.config/lazygit/`)
 - **ghostty**: Terminal emulator — transparency, blur, font, keybinds, tab behavior (`.config/ghostty/`)
 - **Claude Code**: Global settings, plugins (expo, vercel, playwright, context7, etc.), RTK hooks, and instructions (`.claude/`)
 
@@ -29,12 +29,13 @@ cd ~/.dotfiles && bash install.sh
 
 The `install.sh` script automatically installs and configures:
 - Homebrew
-- Neovim, LazyGit, Ghostty, zoxide, zsh-autosuggestions, Powerlevel10k
+- CLI: Neovim, Ghostty, zoxide, zsh-autosuggestions, Powerlevel10k, figlet, gh, awscli, git-delta, terraform, tree
 - Oh My Zsh
 - NVM (Node.js)
 - Bun, pnpm
 - Rust
 - uv (Python)
+- lazygitrs (with `lazygit` wrapper for backward compat)
 - Stows all dotfiles into place
 
 ### What stow sets up
@@ -86,10 +87,18 @@ npm install -g @anthropic-ai/claude-code
 - `Space + fb` - Find buffers
 
 ### Git
-- `Space + gg` - Open LazyGit
+- `Space + gg` - Open lazygit (lazygitrs)
 - `Space + gb` - Switch branches (Telescope)
 - `Space + gs` - Git status (Telescope)
 - `Space + gc` - Git commits (Telescope)
+
+### Harpoon (quick file marks)
+- `Space + a` - Add current file to harpoon
+- `Ctrl + e` - Toggle harpoon menu
+- `Space + 1/2/3/4` - Jump to harpoon file 1-4
+
+### Format
+- `Space + f` - Format buffer (conform.nvim — auto-runs on save)
 
 ### LSP
 - `gd` - Go to definition
