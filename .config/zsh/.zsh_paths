@@ -55,6 +55,13 @@ esac
 # Rust
 [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
+# Ruby (brew Ruby ahead of system 2.6 — needed for CocoaPods, Fastlane, etc.)
+if [ -d "$HOMEBREW_PREFIX/opt/ruby/bin" ]; then
+  export PATH="$HOMEBREW_PREFIX/opt/ruby/bin:$PATH"
+  GEM_BIN="$(gem environment gemdir 2>/dev/null)/bin"
+  [ -d "$GEM_BIN" ] && export PATH="$GEM_BIN:$PATH"
+fi
+
 # FVM
 [ -d "$HOME/.fvm_flutter/bin" ] && export PATH="$HOME/.fvm_flutter/bin:$PATH"
 

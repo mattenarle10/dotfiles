@@ -27,7 +27,7 @@
     "expo@claude-plugins-official": true,
     "atlassian@claude-plugins-official": true,
     "superpowers@claude-plugins-official": true,
-    "everything-claude-code@everything-claude-code": true
+    "ecc@ecc": true
   },
   "extraKnownMarketplaces": {
     "expo-plugins": {
@@ -36,10 +36,10 @@
         "repo": "expo/skills"
       }
     },
-    "everything-claude-code": {
+    "ecc": {
       "source": {
-        "source": "git",
-        "url": "https://github.com/affaan-m/everything-claude-code.git"
+        "source": "github",
+        "repo": "affaan-m/everything-claude-code"
       }
     }
   },

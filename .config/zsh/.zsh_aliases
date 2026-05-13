@@ -37,6 +37,9 @@ alias lt='eza --icons --tree -L 2'  # tree view 2 levels
 alias fh='history | fzf'            # fuzzy search history
 alias ff='fzf --preview "bat --color=always {}"'  # fuzzy find file with preview
 
+# --- GlobalProtect quick kill (UI respawns via launchd; use menu-bar Settings to fully disable) ---
+alias gpoff='pkill -f "GlobalProtect.app/Contents/MacOS/GlobalProtect" && echo "GP UI killed (will respawn)"'
+
 # --- Git Shortcuts ---
 alias gs='git status'       # compact status
 alias ga='git add .'         # add all changes
