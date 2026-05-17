@@ -27,7 +27,8 @@
     "expo@claude-plugins-official": true,
     "atlassian@claude-plugins-official": true,
     "superpowers@claude-plugins-official": true,
-    "ecc@ecc": true
+    "ecc@ecc": true,
+    "clangd-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "expo-plugins": {

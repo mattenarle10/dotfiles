@@ -39,6 +39,7 @@ brew install \
   git-delta \
   hashicorp/tap/terraform \
   firebase-cli \
+  poppler \
   tree
 
 # ── 4. Oh My Zsh ────────────────────────────────────────────────────────────

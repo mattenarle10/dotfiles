@@ -6,7 +6,7 @@ Personal configuration files for zsh, nvim, Claude Code, and other tools.
 
 - **zsh**: Shell configuration with Oh My Zsh, Powerlevel10k, zoxide (`.config/zsh/`)
 - **nvim**: LSP, Telescope, Neo-tree, conform.nvim formatter, Harpoon, lazygit integration (`.config/nvim/`)
-- **lazygit**: Git TUI configuration — used by `lazygitrs` via wrapper (`.config/lazygit/`)
+- **lazygit**: Git TUI config — actually running [`lazygitrs`](https://github.com/Blankeos/lazygitrs) (Rust fork by Blankeos) behind a `~/.local/bin/lazygit` wrapper. Faster startup, AI commit generation, nicer diffs. Same config file (`.config/lazygit/config.yml`)
 - **ghostty**: Terminal emulator — transparency, blur, font, keybinds, tab behavior (`.config/ghostty/`)
 - **Claude Code**: Global settings, plugins (expo, vercel, playwright, context7, etc.), RTK hooks, and instructions (`.claude/`)
 
