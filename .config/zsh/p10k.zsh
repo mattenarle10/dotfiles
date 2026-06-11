@@ -56,7 +56,7 @@
     command_execution_time    # previous command duration
     repo_runtime              # current repo runtime (node/rust/python/go/java)
     virtualenv                # python virtual environment
-    time                      # current time
+    compact_time              # current time, hidden in tiny panes
     # =========================[ Line #2 ]=========================
     newline                   # \n
     prompt_char               # prompt symbol
@@ -114,6 +114,12 @@
   typeset -g POWERLEVEL9K_DIR_VISUAL_IDENTIFIER_EXPANSION=''
   typeset -g POWERLEVEL9K_DIR_ANCHOR_FOREGROUND=255
   typeset -g POWERLEVEL9K_DIR_SHORTENED_FOREGROUND=250
+  typeset -g POWERLEVEL9K_SHORTEN_STRATEGY=truncate_to_unique
+  typeset -g POWERLEVEL9K_SHORTEN_DELIMITER='…'
+  typeset -g POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+  typeset -g POWERLEVEL9K_DIR_MAX_LENGTH=32
+  typeset -g POWERLEVEL9K_DIR_MIN_COMMAND_COLUMNS=45
+  typeset -g POWERLEVEL9K_DIR_MIN_COMMAND_COLUMNS_PCT=45
 
   # Context format when root: user@host. The first part white, the rest grey.
   typeset -g POWERLEVEL9K_CONTEXT_BACKGROUND=236
@@ -143,6 +149,9 @@
 
   prompt_repo_runtime() {
     emulate -L zsh
+
+    # Keep split panes readable. The repo runtime is useful but optional.
+    (( COLUMNS >= 110 )) || return
 
     local root="$PWD"
     local git_root
@@ -180,6 +189,17 @@
     p10k segment -b 24 -f 250 -t "${(j: :)runtimes}"
   }
 
+  prompt_compact_time() {
+    emulate -L zsh
+
+    # Hide time in very narrow panes so commands still have breathing room.
+    (( COLUMNS >= 80 )) || return
+
+    zmodload zsh/datetime 2>/dev/null || return
+    local now="$(strftime '%H:%M:%S' "$EPOCHSECONDS")"
+    p10k segment -b 236 -f 250 -t " $now"
+  }
+
   # Git prompt block.
   typeset -g POWERLEVEL9K_VCS_BACKGROUND=238
   typeset -g POWERLEVEL9K_VCS_FOREGROUND=250
@@ -212,17 +232,6 @@
   typeset -g POWERLEVEL9K_VCS_{COMMITS_AHEAD,COMMITS_BEHIND}_MAX_NUM=1
   # Remove space between '⇣' and '⇡' and all trailing spaces.
   typeset -g POWERLEVEL9K_VCS_CONTENT_EXPANSION='${${${P9K_CONTENT/⇣* :⇡/⇣⇡}// }//:/ }'
-
-  # Grey current time block.
-  typeset -g POWERLEVEL9K_TIME_BACKGROUND=236
-  typeset -g POWERLEVEL9K_TIME_FOREGROUND=250
-  typeset -g POWERLEVEL9K_TIME_VISUAL_IDENTIFIER_EXPANSION=''
-  # Format for the current time: 09:51:02. See `man 3 strftime`.
-  typeset -g POWERLEVEL9K_TIME_FORMAT='%D{%H:%M:%S}'
-  # If set to true, time will update when you hit enter. This way prompts for the past
-  # commands will contain the start times of their commands rather than the end times of
-  # their preceding commands.
-  typeset -g POWERLEVEL9K_TIME_UPDATE_ON_COMMAND=false
 
   # Transient prompt works similarly to the builtin transient_rprompt option. It trims down prompt
   # when accepting a command line. Supported values:
