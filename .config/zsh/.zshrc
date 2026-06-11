@@ -11,8 +11,24 @@ fi
 
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME=""
-plugins=(git)
+plugins=(git history-substring-search)
 source $ZSH/oh-my-zsh.sh
+
+# Vim-style command editing, with familiar shell shortcuts kept.
+bindkey -v
+export KEYTIMEOUT=1
+bindkey '^A' beginning-of-line
+bindkey '^E' end-of-line
+
+# Search history by the command prefix already typed.
+if (( $+widgets[history-substring-search-up] )); then
+  bindkey '^[[A' history-substring-search-up
+  bindkey '^[[B' history-substring-search-down
+  bindkey -M viins '^[[A' history-substring-search-up
+  bindkey -M viins '^[[B' history-substring-search-down
+  bindkey -M vicmd 'k' history-substring-search-up
+  bindkey -M vicmd 'j' history-substring-search-down
+fi
 
 # Load PATHs
 [ -f ~/.config/zsh/.zsh_paths ] && source ~/.config/zsh/.zsh_paths
@@ -43,6 +59,12 @@ export SAVEHIST=1000000
 setopt HIST_IGNORE_ALL_DUPS   # no duplicate history entries
 setopt HIST_FIND_NO_DUPS      # don't show duplicates when searching history
 setopt HIST_REDUCE_BLANKS     # trim extra blanks in commands
+setopt HIST_IGNORE_SPACE      # don't save commands prefixed with a space
+setopt INC_APPEND_HISTORY     # write commands as they run, not only on shell exit
+
+# Completion tuning.
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 # Prompt (fallback if Powerlevel10k not loaded)
 PROMPT='%F{cyan}Matt%f %F{blue}%~%f %# '

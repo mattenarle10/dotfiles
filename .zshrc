@@ -7,4 +7,6 @@ fi
 
 alias claude-mem='bun "$HOME/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
 export PATH="$HOME/.maestro/bin/maestro/bin:$PATH"
-eval "$(rbenv init - zsh)"
+if command -v rbenv >/dev/null 2>&1; then
+  eval "$(rbenv init - zsh)"
+fi

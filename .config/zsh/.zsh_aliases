@@ -21,7 +21,8 @@ alias awscred='nvim ~/.aws/credentials'
 # --- Reload & Helpers ---
 alias rld='source $ZDOTDIR/.zshrc && echo "Reloaded zsh . . . "'
 alias h='help'
-alias mhelp='source ~/.config/zsh/.matt_greeting.sh'
+alias mhelp='help'
+alias banner='matt-greeting'
 
 # --- bat (better cat) ---
 alias cat='bat --paging=never'

@@ -8,6 +8,12 @@
 *.backup
 *~
 
+# Runtime logs
+*.log
+
+# Zed runtime prompt database
+.config/zed/prompts/
+
 # Zsh runtime files
 .config/zsh/.zcompdump*
 .config/zsh/.zsh_history

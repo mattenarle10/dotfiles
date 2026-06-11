@@ -62,6 +62,12 @@ if [ -d "$HOMEBREW_PREFIX/opt/ruby/bin" ]; then
   [ -d "$GEM_BIN" ] && export PATH="$GEM_BIN:$PATH"
 fi
 
+# Java (brew openjdk@21 — needed for JMeter and other JVM tools; keg-only so PATH must be set manually)
+if [ -d "$HOMEBREW_PREFIX/opt/openjdk@21" ]; then
+  export PATH="$HOMEBREW_PREFIX/opt/openjdk@21/bin:$PATH"
+  export JAVA_HOME="$HOMEBREW_PREFIX/opt/openjdk@21"
+fi
+
 # FVM
 [ -d "$HOME/.fvm_flutter/bin" ] && export PATH="$HOME/.fvm_flutter/bin:$PATH"
 
