@@ -52,8 +52,8 @@
     # context                 # user@host
     dir                       # current directory
     vcs                       # git status
-    status                    # previous command exit code
-    command_execution_time    # previous command duration
+    compact_status            # previous command exit code
+    compact_command_time      # previous command duration
     repo_runtime              # current repo runtime (node/rust/python/go/java)
     virtualenv                # python virtual environment
     compact_time              # current time, hidden in tiny panes
@@ -129,23 +129,28 @@
   # Don't show context unless root or in SSH.
   typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,SUDO}_CONTENT_EXPANSION=
 
-  # Show previous command duration only if it's >= 2s.
-  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=2
-  # Don't show fractional seconds. Thus, 7s rather than 7.3s.
-  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_PRECISION=0
-  # Duration format: 1d 2h 3m 4s.
-  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FORMAT='d h m s'
-  # Yellow previous command duration.
-  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND=3
-  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND=0
-  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_VISUAL_IDENTIFIER_EXPANSION='󱎫'
+  prompt_compact_status() {
+    emulate -L zsh
 
-  # Show non-zero exit status on the top-right prompt line.
-  typeset -g POWERLEVEL9K_STATUS_OK=false
-  typeset -g POWERLEVEL9K_STATUS_ERROR=true
-  typeset -g POWERLEVEL9K_STATUS_ERROR_BACKGROUND=1
-  typeset -g POWERLEVEL9K_STATUS_ERROR_FOREGROUND=255
-  typeset -g POWERLEVEL9K_STATUS_ERROR_VISUAL_IDENTIFIER_EXPANSION='✘'
+    (( P9K_STATUS )) || return
+    p10k segment -b 1 -f 255 -t "✘ $P9K_STATUS"
+  }
+
+  prompt_compact_command_time() {
+    emulate -L zsh
+
+    (( P9K_COMMAND_DURATION_SECONDS >= 2 && P9K_COMMAND_DURATION_SECONDS < 3600 )) || return
+
+    local seconds=$P9K_COMMAND_DURATION_SECONDS
+    local minutes=$(( seconds / 60 ))
+    seconds=$(( seconds % 60 ))
+
+    if (( minutes > 0 )); then
+      p10k segment -b 3 -f 0 -t "󱎫 ${minutes}m ${seconds}s"
+    else
+      p10k segment -b 3 -f 0 -t "󱎫 ${seconds}s"
+    fi
+  }
 
   prompt_repo_runtime() {
     emulate -L zsh
