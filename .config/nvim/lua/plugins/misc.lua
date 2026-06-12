@@ -89,9 +89,9 @@ return {
         bg = "NONE",
         fg = "#cdd6f4",
         muted = "#a6adc8",
-        panel = "#111827",
-        royal = "#2563eb",
-        royal_soft = "#60a5fa",
+        panel = "#172033",
+        royal = "#3b82f6",
+        royal_soft = "#93c5fd",
         red = "#f38ba8",
         yellow = "#f9e2af",
       }
@@ -110,7 +110,7 @@ return {
               c = { fg = colors.muted, bg = colors.bg },
             },
             visual = {
-              a = { fg = colors.fg, bg = "#4338ca", gui = "bold" },
+              a = { fg = colors.fg, bg = "#2563eb", gui = "bold" },
               b = { fg = colors.fg, bg = colors.panel },
               c = { fg = colors.muted, bg = colors.bg },
             },

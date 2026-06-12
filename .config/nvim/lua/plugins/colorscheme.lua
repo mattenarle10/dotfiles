@@ -5,10 +5,10 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      local royal = "#2563eb"
-      local royal_soft = "#60a5fa"
-      local panel = "#111827"
-      local panel_light = "#172033"
+      local royal = "#3b82f6"
+      local royal_soft = "#93c5fd"
+      local panel = "#172033"
+      local panel_light = "#22345a"
 
       require("catppuccin").setup({
         flavour = "mocha", -- latte, frappe, macchiato, mocha
