@@ -90,8 +90,8 @@ return {
         fg = "#cdd6f4",
         muted = "#a6adc8",
         panel = "#111827",
-        royal = "#1e40af",
-        royal_soft = "#3b82f6",
+        royal = "#2563eb",
+        royal_soft = "#60a5fa",
         red = "#f38ba8",
         yellow = "#f9e2af",
       }
