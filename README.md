@@ -10,7 +10,7 @@ Personal configuration files for zsh, nvim, Claude Code, Codex, and other tools.
 - **ghostty**: Terminal emulator — transparency, blur, font, keybinds, tab behavior (`.config/ghostty/`)
 - **Zed**: Fast GUI editor with Vim mode and Codex ACP (`.config/zed/settings.json`)
 - **Claude Code**: Global settings, plugins (expo, vercel, playwright, context7, etc.), RTK hooks, and instructions (`.claude/`)
-- **Codex**: Global defaults, trusted project paths, OpenAI docs MCP, and GitHub plugin approvals (`.codex/config.toml`, `AGENTS.md`)
+- **Codex**: Global defaults, trusted project paths, global agent guidance, OpenAI docs MCP, and GitHub plugin settings (`.codex/config.toml`, `.codex/AGENTS.md`)
 
 **📖 New to Nvim config?** Check out [NVIM_GUIDE.md](NVIM_GUIDE.md) for a step-by-step learning path!
 
@@ -54,7 +54,10 @@ The `install.sh` script automatically installs and configures:
 # ~/.claude/settings.json -> ~/.dotfiles/.claude/settings.json
 # ~/.claude/hooks/* -> ~/.dotfiles/.claude/hooks/*
 # ~/.codex/config.toml -> ~/.dotfiles/.codex/config.toml
-# ~/AGENTS.md -> ~/.dotfiles/AGENTS.md
+# ~/.codex/AGENTS.md -> ~/.dotfiles/.codex/AGENTS.md
+# ~/.codex/fast.config.toml -> ~/.dotfiles/.codex/fast.config.toml
+# ~/.codex/deep-review.config.toml -> ~/.dotfiles/.codex/deep-review.config.toml
+# ~/AGENTS.md -> ~/.dotfiles/AGENTS.md  # dotfiles-repo guidance only
 # etc.
 ```
 
@@ -150,7 +153,10 @@ stow -D .  # Remove all symlinks
 │   └── hooks/
 │       └── rtk-rewrite.sh # RTK bash command rewriter
 ├── .codex/
-│   └── config.toml        # Global Codex defaults and trusted project paths
+│   ├── AGENTS.md          # Global Codex working instructions
+│   ├── config.toml        # Global Codex settings and trusted project paths
+│   ├── fast.config.toml   # Fast/lower-token Codex profile
+│   └── deep-review.config.toml # Higher-effort review profile
 ├── .config/
 │   ├── nvim/              # Neovim configuration
 │   │   ├── init.lua
@@ -171,7 +177,7 @@ stow -D .  # Remove all symlinks
 │       ├── .matt_greeting.sh
 │       └── p10k.zsh
 ├── .gitignore
-├── AGENTS.md              # Default Codex working instructions
+├── AGENTS.md              # Dotfiles repository instructions
 ├── NVIM_GUIDE.md          # Learn your nvim config!
 └── README.md
 ```

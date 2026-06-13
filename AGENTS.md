@@ -1,51 +1,29 @@
-# Matt's Codex Defaults
+# Dotfiles Agent Instructions
 
-Use this file as the default working style for Codex sessions under this home directory.
+This repository manages Matt's local shell, editor, Claude, and Codex setup.
 
-## Working Style
+## Scope
 
-- Read the repo before changing files. Prefer `rg`, `rg --files`, `git status`, and nearby examples before deciding.
-- Keep changes scoped to the user's request. Do not refactor unrelated code or touch unrelated files.
-- Work with existing patterns, frameworks, naming, formatting, and project structure.
-- If a request is actionable, do the work instead of only explaining the plan.
-- Before editing, briefly say what will change and why.
-- After editing, run the most relevant check available: tests, typecheck, lint, build, or a targeted command.
-- If a check cannot run, say exactly why.
-- Protect user work. Never revert or overwrite changes you did not make unless explicitly asked.
+- Global Codex working rules live in `.codex/AGENTS.md` and should be stowed to `~/.codex/AGENTS.md`.
+- Codex settings live in `.codex/config.toml`, which is stowed to `~/.codex/config.toml`.
+- Keep this root file focused on dotfiles repository maintenance, not general agent behavior.
 
-## Communication
+## Safety
 
-- Be direct, casual, and practical.
-- Keep updates short while working.
-- For reviews, findings come first with file and line references.
-- For finished work, summarize what changed and what was verified.
-- Do not over-explain simple changes.
+- Never add secrets, tokens, credentials, private keys, cookies, or local-only auth files to this repo.
+- Treat `.config/zsh/.zsh_secrets`, `.claude/settings.local.json`, logs, caches, histories, SQLite state, and generated runtime files as local-only.
+- Do not overwrite user-local Codex state such as `~/.codex/auth.json`, sessions, logs, memories, plugin caches, or rules unless explicitly asked.
+- Be careful with `~/.codex/rules/default.rules`; it changes command approval behavior globally.
 
-## Coding Preferences
+## Editing
 
-- Prefer small, readable changes over clever abstractions.
-- Add abstractions only when they remove real duplication or match the repo's established style.
-- Use structured parsers/APIs when available instead of fragile string manipulation.
-- Add comments only when they clarify non-obvious logic.
-- Keep generated text and code mostly ASCII unless the file already uses Unicode or the task needs it.
+- Keep changes scoped to the requested setup area.
+- Prefer updating tracked dotfiles instead of editing generated files in `~/.codex`, `~/.claude`, or `~/.config` directly.
+- When adding a new stowed Codex file, update `README.md` so the expected symlink is documented.
+- Preserve existing formatting style: concise Markdown, simple TOML, and shell scripts that pass `bash -n`.
 
-## Frontend Preferences
+## Verification
 
-- Build the actual usable screen first, not a landing page, unless the user asks for marketing copy.
-- Match the existing design system before introducing new visual ideas.
-- Keep app UIs dense, useful, and easy to scan.
-- Use real controls: icons for tools, tabs for views, toggles for binary options, inputs/sliders for numbers.
-- Avoid decorative gradient blobs/orbs and one-note color palettes.
-- Check mobile and desktop layout when doing meaningful UI work.
-
-## Codex Workflow
-
-- Treat Codex as a repo operator, not just a chat assistant.
-- Good default prompt shape:
-
-```text
-Read the repo first. Keep the change scoped. Make the edit, run the relevant check, and summarize what changed.
-```
-
-- Prefer completing tasks end to end in one pass when feasible.
-- Use project-level `AGENTS.md` files to override or add repo-specific commands, gotchas, and conventions.
+- After changing Codex TOML, parse it with `python3 -c 'import tomllib, pathlib; tomllib.loads(pathlib.Path(".codex/config.toml").read_text())'`.
+- After changing `install.sh`, run `bash -n install.sh`.
+- After changing stow-managed paths, check `git status --short` and mention whether activation requires running `stow .` or creating a symlink.
