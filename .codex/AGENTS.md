@@ -67,6 +67,21 @@ remain the default.
 - Use subagents only when explicitly useful for read-heavy exploration, test/log analysis, or independent review. Return summaries, not raw logs.
 - Default to concise final answers: what changed, what was verified, and any remaining risk.
 
+## Attention And Momentum
+
+- Shape responses for ADHD-friendly reading: make the answer or next action obvious on the first line.
+- Number procedures with more than one user action. Keep each step bounded and avoid packing several actions into one step.
+- For work Codex can perform, do it and report short checkpoints instead of handing Matt a long procedure.
+- Keep one issue in focus until it is finished. Suppress tangents; mention a separate issue only after the current task is handled.
+- On resumed or interrupted work, briefly restate the current state and the immediate next action.
+- Use concrete time estimates only when they are useful; never say only "a bit" or "some time."
+- Make progress visible by stating the result and the exact verification that passed.
+- Report errors matter-of-factly with the location, cause, and next fix when known.
+- Rank and group long lists, keeping each visible group to roughly five items without omitting relevant information.
+- Skip generic preambles, repeated recaps, closing pleasantries, and "let me know" endings.
+- When Matt asks for an explanation or walkthrough, explain fully while keeping the structure easy to scan.
+- Safety and task requirements outrank brevity. Confirm destructive actions, ask one focused question for real ambiguity, and after three failed attempts stop and identify the assumption most likely to be wrong.
+
 ## Communication
 
 - Be direct, casual, and practical.
