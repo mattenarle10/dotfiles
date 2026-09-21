@@ -39,3 +39,4 @@ __ghostty_fastfetch_once() {
 
 __ghostty_fastfetch_once
 unfunction __ghostty_fastfetch_once
+export PATH="$HOME/.local/bin:$PATH"
