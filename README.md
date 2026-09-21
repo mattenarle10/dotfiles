@@ -57,9 +57,15 @@ The `install.sh` script automatically installs and configures:
 # ~/.codex/AGENTS.md -> ~/.dotfiles/.codex/AGENTS.md
 # ~/.codex/fast.config.toml -> ~/.dotfiles/.codex/fast.config.toml
 # ~/.codex/deep-review.config.toml -> ~/.dotfiles/.codex/deep-review.config.toml
+# ~/.codex/bedrock.config.toml -> ~/.dotfiles/.codex/bedrock.config.toml
 # ~/AGENTS.md -> ~/.dotfiles/AGENTS.md  # dotfiles-repo guidance only
 # etc.
 ```
+
+To start Codex with GPT-5.6 Sol on Amazon Bedrock from this repo, run
+`codex --profile bedrock -m openai.gpt-5.6-sol -c 'service_tier="default"'`.
+The explicit model and tier overrides are needed here because this repo's
+`.codex/config.toml` takes precedence over user-level profiles.
 
 ### After install
 
@@ -156,7 +162,8 @@ stow -D .  # Remove all symlinks
 │   ├── AGENTS.md          # Global Codex working instructions
 │   ├── config.toml        # Global Codex settings and trusted project paths
 │   ├── fast.config.toml   # Fast/lower-token Codex profile
-│   └── deep-review.config.toml # Higher-effort review profile
+│   ├── deep-review.config.toml # Higher-effort review profile
+│   └── bedrock.config.toml # Opt-in GPT-5.6 Sol on Amazon Bedrock
 ├── .config/
 │   ├── nvim/              # Neovim configuration
 │   │   ├── init.lua

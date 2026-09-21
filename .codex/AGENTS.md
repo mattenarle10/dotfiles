@@ -114,3 +114,5 @@ remain the default.
 - Default prompt shape: read the repo first, keep the change scoped, make the edit, run the relevant check, and summarize what changed.
 - Prefer completing tasks end to end in one pass when feasible.
 - Use project-level `AGENTS.md` files to override or add repo-specific commands, gotchas, and conventions.
+
+@/Users/mattenarle/.codex/RTK.md

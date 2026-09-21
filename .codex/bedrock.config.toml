@@ -1,0 +1,12 @@
+model = "openai.gpt-5.5"
+model_provider = "amazon-bedrock"
+service_tier = "default"
+model_reasoning_effort = "medium"
+
+[model_providers.amazon-bedrock.aws]
+region = "us-east-1"
+
+[hooks.state]
+
+[hooks.state."vercel@claude-plugins-official:hooks/hooks.json:post_tool_use:0:0"]
+trusted_hash = "sha256:8e8342b887788e4149d3d19edddfea5bde6b45162d036fa611b32538d1dad97b"
