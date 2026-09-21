@@ -6,47 +6,53 @@
         "hooks": [
           {
             "type": "command",
-            "command": "$HOME/.claude/hooks/rtk-rewrite.sh"
+            "command": "rtk hook claude"
           }
         ]
       }
     ]
   },
   "enabledPlugins": {
-    "commit-commands@claude-plugins-official": true,
-    "rust-analyzer-lsp@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true,
-    "frontend-design@claude-plugins-official": true,
-    "pyright-lsp@claude-plugins-official": true,
-    "vercel@claude-plugins-official": true,
-    "aws-serverless@claude-plugins-official": false,
-    "context7@claude-plugins-official": true,
-    "github@claude-plugins-official": true,
-    "feature-dev@claude-plugins-official": true,
-    "playwright@claude-plugins-official": true,
-    "expo@claude-plugins-official": true,
     "atlassian@claude-plugins-official": true,
-    "superpowers@claude-plugins-official": true,
+    "aws-serverless@claude-plugins-official": false,
+    "clangd-lsp@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
     "ecc@ecc": true,
-    "clangd-lsp@claude-plugins-official": true
+    "expo@claude-plugins-official": true,
+    "feature-dev@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "github@claude-plugins-official": true,
+    "playwright@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "vercel@claude-plugins-official": true,
+    "typesafe@typesafe-ai": true
   },
   "extraKnownMarketplaces": {
+    "ecc": {
+      "source": {
+        "source": "github",
+        "repo": "affaan-m/everything-claude-code"
+      }
+    },
     "expo-plugins": {
       "source": {
         "source": "github",
         "repo": "expo/skills"
       }
     },
-    "ecc": {
+    "typesafe-ai": {
       "source": {
         "source": "github",
-        "repo": "affaan-m/everything-claude-code"
+        "repo": "typesafe-ai/skills"
       }
     }
   },
   "effortLevel": "high",
   "editorMode": "vim",
   "verbose": true,
-  "agentPushNotifEnabled": true,
-  "skipAutoPermissionPrompt": true
+  "agentPushNotifEnabled": true
 }

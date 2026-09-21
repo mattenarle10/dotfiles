@@ -193,6 +193,9 @@ enabled = true
 [plugins."ecc@ecc"]
 enabled = true
 
+[plugins."typesafe@typesafe-ai"]
+enabled = true
+
 [marketplaces.openai-bundled]
 last_updated = "2026-07-02T08:50:08Z"
 source_type = "local"
@@ -212,6 +215,10 @@ source = "/Users/mattenarle/.cache/codex-runtimes/codex-primary-runtime/plugins/
 last_updated = "2026-07-02T08:51:36Z"
 source_type = "git"
 source = "https://github.com/affaan-m/everything-claude-code.git"
+
+[marketplaces.typesafe-ai]
+source_type = "git"
+source = "https://github.com/typesafe-ai/skills.git"
 
 [desktop]
 conversationDetailMode = "STEPS_COMMANDS"
