@@ -9,8 +9,8 @@ Personal configuration files for zsh, nvim, Claude Code, Codex, and other tools.
 - **lazygit**: Git TUI config — actually running [`lazygitrs`](https://github.com/Blankeos/lazygitrs) (Rust fork by Blankeos) behind a `~/.local/bin/lazygit` wrapper. Faster startup, AI commit generation, nicer diffs. `install.sh` now trusts the package postinstall so the real binary is downloaded, while the UI still reads the shared config file (`.config/lazygit/config.yml`)
 - **ghostty**: Terminal emulator — transparency, blur, font, keybinds, tab behavior (`.config/ghostty/`)
 - **Zed**: Fast GUI editor with Vim mode and Codex ACP (`.config/zed/settings.json`)
-- **Claude Code**: Global settings, plugins (expo, vercel, playwright, context7, etc.), RTK hooks, and instructions (`.claude/`)
-- **Codex**: Global defaults, trusted project paths, global agent guidance, OpenAI docs MCP, and GitHub plugin settings (`.codex/config.toml`, `.codex/AGENTS.md`)
+- **Claude Code**: Global settings, plugins (expo, vercel, playwright, context7, etc.), RTK hook, Caveman + ADHD response guidance and skills, and instructions (`.claude/`, `.agents/skills/`)
+- **Codex**: Global defaults, RTK command output, Caveman + ADHD response guidance and skills, trusted project paths, OpenAI docs MCP, and GitHub plugin settings (`.codex/`, `.agents/skills/`)
 
 **📖 New to Nvim config?** Check out [NVIM_GUIDE.md](NVIM_GUIDE.md) for a step-by-step learning path!
 
@@ -37,7 +37,7 @@ The `install.sh` script automatically installs and configures:
 - NVM (Node.js)
 - Bun, pnpm
 - Rust
-- RTK for Claude command rewriting
+- RTK for Claude command rewriting and Codex command output
 - uv (Python)
 - Codex CLI, TypeScript, and TypeScript language server
 - lazygitrs (with `lazygit` wrapper for backward compat)
@@ -51,13 +51,19 @@ The `install.sh` script automatically installs and configures:
 # ~/.config/lazygit -> ~/.dotfiles/.config/lazygit
 # ~/.config/ghostty/config -> ~/.dotfiles/.config/ghostty/config
 # ~/.config/zed/settings.json -> ~/.dotfiles/.config/zed/settings.json
+# ~/.claude/CLAUDE.md -> ~/.dotfiles/.claude/CLAUDE.md
+# ~/.claude/RTK.md -> ~/.dotfiles/.claude/RTK.md
 # ~/.claude/settings.json -> ~/.dotfiles/.claude/settings.json
 # ~/.claude/hooks/* -> ~/.dotfiles/.claude/hooks/*
+# ~/.claude/skills/caveman -> ~/.dotfiles/.claude/skills/caveman      # -> .agents/skills/caveman
+# ~/.claude/skills/i-have-adhd -> ~/.dotfiles/.claude/skills/i-have-adhd  # -> .agents/skills/i-have-adhd
 # ~/.codex/config.toml -> ~/.dotfiles/.codex/config.toml
 # ~/.codex/AGENTS.md -> ~/.dotfiles/.codex/AGENTS.md
 # ~/.codex/fast.config.toml -> ~/.dotfiles/.codex/fast.config.toml
 # ~/.codex/deep-review.config.toml -> ~/.dotfiles/.codex/deep-review.config.toml
 # ~/.codex/bedrock.config.toml -> ~/.dotfiles/.codex/bedrock.config.toml
+# ~/.agents/skills/caveman -> ~/.dotfiles/.agents/skills/caveman
+# ~/.agents/skills/i-have-adhd -> ~/.dotfiles/.agents/skills/i-have-adhd
 # ~/AGENTS.md -> ~/.dotfiles/AGENTS.md  # dotfiles-repo guidance only
 # etc.
 ```
@@ -66,6 +72,95 @@ To start Codex with GPT-5.6 Sol on Amazon Bedrock from this repo, run
 `codex --profile bedrock -m openai.gpt-5.6-sol -c 'service_tier="default"'`.
 The explicit model and tier overrides are needed here because this repo's
 `.codex/config.toml` takes precedence over user-level profiles.
+
+### Codex Response Defaults And Skills
+
+`~/.codex/AGENTS.md` loads concise Caveman-style prose and ADHD-friendly steps
+in every new Codex session. RTK reduces shell output independently. Full
+explanations, exact technical details, and required safety checks take priority
+over brevity. This setup uses instruction-only skills, with no Caveman proxy,
+session hooks, or telemetry runtime.
+
+The two skills are vendored from reviewed upstream revisions:
+
+| Skill | Source | Pinned commit | Licence |
+| --- | --- | --- | --- |
+| `caveman` | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman) | `2e08b9177c07bb7249a8a2d1a6758e5db281d002` | Apache-2.0; upstream MIT notice retained |
+| `i-have-adhd` | [ayghri/i-have-adhd](https://github.com/ayghri/i-have-adhd) | `723af7d9afaf43eb871dbcce6129e2bf80de90d5` | MIT |
+
+Codex discovers [global skills](https://learn.chatgpt.com/docs/build-skills)
+under `~/.agents/skills` and supports symlinked skill folders. The compact
+global rules are always loaded; the full skill files are loaded only when
+explicitly invoked with `$caveman` or `$i-have-adhd` (also available in
+`/skills`). This avoids loading both complete rulesets for every task.
+
+Say `stop caveman` to relax terse prose, `stop adhd mode` to relax structured
+presentation, or `normal mode` to relax both for the current session. Invoking
+a skill re-enables its style. New sessions restore the combined defaults.
+
+On this Mac, the global `AGENTS.md` is already linked. Full `stow .` currently
+has unrelated target conflicts. Activate only missing skill links with:
+
+```bash
+mkdir -p ~/.agents/skills
+ln -s ~/.dotfiles/.agents/skills/caveman ~/.agents/skills/caveman
+ln -s ~/.dotfiles/.agents/skills/i-have-adhd ~/.agents/skills/i-have-adhd
+```
+
+These commands intentionally fail if a target already exists; inspect it
+instead of replacing it. Do not use `stow --adopt` to resolve the conflicts.
+Restart Codex to load updated global instructions; skills normally refresh
+automatically. Upstream snapshots, licences, and local adaptation notes stay
+with each skill. Review updates before changing the pinned revisions.
+
+### Claude Response Defaults And Skills
+
+`~/.claude/CLAUDE.md` gives Claude Code the same compact Caveman + ADHD
+defaults in every new session and imports `RTK.md`. The rules mirror the
+response-style section of `.codex/AGENTS.md`; update both when either changes.
+This setup is instruction-only, with no Caveman proxy, extra hooks, or
+telemetry runtime.
+
+Claude Code's documented [skill locations](https://code.claude.com/docs/en/skills)
+do not include `~/.agents/skills`, and `agents/openai.yaml` is Codex-only.
+Claude discovers personal skills under `~/.claude/skills/<name>/SKILL.md`, and
+a skill folder there may be a symlink. `.claude/skills/caveman` and
+`.claude/skills/i-have-adhd` are tracked relative symlinks to the vendored
+folders in `.agents/skills/`, so both tools share one source.
+`disable-model-invocation: true` in each `SKILL.md` keeps the skill
+explicit-only in Claude: its description stays out of context, and the full
+text loads only when you run `/caveman` or `/i-have-adhd`.
+
+The style controls match Codex. Say `stop caveman`, `stop adhd mode`, or
+`normal mode` to relax a style for the current session. Say `caveman mode` or
+`adhd mode`, or run the skill, to re-enable it. New sessions restore the
+defaults. An override given in conversation is kept across compaction on a
+best-effort basis, because Claude Code summarizes conversation history.
+
+RTK for Claude is one `PreToolUse` Bash hook (`rtk hook claude`) in
+`.claude/settings.json` plus the `@RTK.md` import in `CLAUDE.md`. Keep a single
+RTK hook; `rtk init --show` reports the current state.
+
+On this Mac, `~/.claude/CLAUDE.md`, `RTK.md`, `settings.json`, and `hooks` are
+already linked. Activate only missing skill links with:
+
+```bash
+mkdir -p ~/.claude/skills
+ln -s ../../.dotfiles/.claude/skills/caveman ~/.claude/skills/caveman
+ln -s ../../.dotfiles/.claude/skills/i-have-adhd ~/.claude/skills/i-have-adhd
+```
+
+These relative targets match what `stow .` creates. The commands intentionally
+fail if a target already exists; inspect it instead of replacing it.
+
+Reload after changes:
+
+- `CLAUDE.md` and `RTK.md` load at launch. Start a new Claude Code session to
+  pick up edits, then check the loaded files with `/memory`.
+- Skill edits apply within the running session. Run `/reload-skills` if
+  `~/.claude/skills` did not exist when the session started.
+- Hook edits in `settings.json` are picked up automatically. Review them with
+  `/hooks`.
 
 ### After install
 
@@ -151,13 +246,17 @@ stow -D .  # Remove all symlinks
 
 ```
 ~/.dotfiles/
+├── .agents/
+│   └── skills/            # Vendored skills shared by Codex and Claude
+│       ├── caveman/
+│       └── i-have-adhd/
 ├── .claude/
-│   ├── CLAUDE.md          # Global instructions
+│   ├── CLAUDE.md          # Global instructions and response-style defaults
 │   ├── RTK.md             # RTK token optimizer config
-│   ├── settings.json      # Plugins, hooks, effort level
+│   ├── settings.json      # Plugins, hooks (RTK runs as `rtk hook claude`), effort level
 │   ├── settings.local.json# Local permissions (ignored)
-│   └── hooks/
-│       └── rtk-rewrite.sh # RTK bash command rewriter
+│   ├── hooks/             # Local hook scripts
+│   └── skills/            # Symlinks to ../../.agents/skills/*
 ├── .codex/
 │   ├── AGENTS.md          # Global Codex working instructions
 │   ├── config.toml        # Global Codex settings and trusted project paths

@@ -67,10 +67,17 @@ remain the default.
 - Use subagents only when explicitly useful for read-heavy exploration, test/log analysis, or independent review. Return summaries, not raw logs.
 - Default to concise final answers: what changed, what was verified, and any remaining risk.
 
-## Attention And Momentum
+## Response Style: Caveman And ADHD
 
-- Shape responses for ADHD-friendly reading: make the answer or next action obvious on the first line.
-- Number procedures with more than one user action. Keep each step bounded and avoid packing several actions into one step.
+Use these defaults in every fresh session. They combine the core Caveman and
+i-have-adhd skills vendored in `.agents/skills`; full skill text is available
+through `$caveman` and `$i-have-adhd` when explicitly requested.
+
+- Lead with the answer or next action. Put the exact command, path, or snippet first when it is the answer.
+- Use short, plain sentences with one idea each. Cut filler and ceremony; clarity wins over compression. Never add broken grammar to sound like a caveman.
+- Keep code, commands, paths, API names, errors, numbers, units, negations, and meaningful uncertainty exact. Compress prose, not technical substance.
+- Put literal commands and errors in code formatting. Keep sentence punctuation outside the literal.
+- Number procedures with two or more user actions, even short procedures. Keep each step bounded and avoid packing several actions into one step.
 - For work Codex can perform, do it and report short checkpoints instead of handing Matt a long procedure.
 - Keep one issue in focus until it is finished. Suppress tangents; mention a separate issue only after the current task is handled.
 - On resumed or interrupted work, briefly restate the current state and the immediate next action.
@@ -80,7 +87,10 @@ remain the default.
 - Rank and group long lists, keeping each visible group to roughly five items without omitting relevant information.
 - Skip generic preambles, repeated recaps, closing pleasantries, and "let me know" endings.
 - When Matt asks for an explanation or walkthrough, explain fully while keeping the structure easy to scan.
+- Use full sentences for questions, warnings, confirmations, confusing step order, and persisted writing such as docs, comments, commits, or third-party messages.
+- If work remains, end with one concrete next action. When the task is finished, stop without inventing another task.
 - Safety and task requirements outrank brevity. Confirm destructive actions, ask one focused question for real ambiguity, and after three failed attempts stop and identify the assumption most likely to be wrong.
+- "stop caveman" relaxes terse prose; "stop adhd mode" relaxes the ADHD presentation rules; "normal mode" relaxes both for the rest of the session. Confirm in one line. Explicit skill invocation re-enables that style. Fresh sessions restore both defaults. These overrides affect response style, not RTK, accuracy, permissions, or engineering checks.
 
 ## Communication
 
@@ -115,4 +125,9 @@ remain the default.
 - Prefer completing tasks end to end in one pass when feasible.
 - Use project-level `AGENTS.md` files to override or add repo-specific commands, gotchas, and conventions.
 
-@/Users/mattenarle/.codex/RTK.md
+## RTK Command Output
+
+- Prefix shell commands with `rtk` when supported, for example `rtk git status` or `rtk cargo test`. Use `rtk proxy <command>` for commands without a dedicated RTK filter.
+- Keep the prefix on each command in a chain or pipeline. Preserve shell quoting, arguments, working directories, and command approval boundaries.
+- RTK condenses output to save context. Follow any recovery path shown in truncated output; use `rtk proxy <command>` when condensed output is missing necessary detail, garbled, or contradicts its exit status.
+- Use `rtk gain` to inspect savings. If RTK is unavailable, report that and run the original command; do not silently claim compression was active.

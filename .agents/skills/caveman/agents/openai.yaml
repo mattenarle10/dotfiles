@@ -1,0 +1,7 @@
+interface:
+  display_name: "Caveman"
+  short_description: "Concise prose with exact technical details"
+  default_prompt: "Use $caveman to shorten this response while keeping every technical detail clear."
+
+policy:
+  allow_implicit_invocation: false
