@@ -139,9 +139,28 @@ The style controls match Codex. Say `stop caveman`, `stop adhd mode`, or
 defaults. An override given in conversation is kept across compaction on a
 best-effort basis, because Claude Code summarizes conversation history.
 
-RTK for Claude is one `PreToolUse` Bash hook (`rtk hook claude`) in
-`.claude/settings.json` plus the `@RTK.md` import in `CLAUDE.md`. Keep a single
-RTK hook; `rtk init --show` reports the current state.
+RTK for Claude keeps one native `PreToolUse` Bash hook (`rtk hook claude`) in
+`.claude/settings.json`, plus the `@RTK.md` import in `CLAUDE.md`. A separate
+compatibility guard runs `python3 "$HOME/.claude/hooks/rtk-safe.py"`. It rejects
+misplaced leading `rtk` / `rtk proxy` prefixes on `open`, `osascript`, `pbcopy`,
+and `pbpaste` (including `/usr/bin/` spellings), then tells Claude to retry
+the raw command with the original arguments and approvals. Raw unsupported
+commands pass through. The guard never executes, rewrites, or auto-approves
+the requested command; only the native hook does supported RTK rewrites.
+This avoids competing `updatedInput` results from parallel hooks. Keep one
+native RTK hook and one compatibility guard; `rtk init --show` recognizes the
+native hook. Compatibility instructions live in `CLAUDE.md`, because
+`rtk init -g` regenerates `RTK.md`.
+
+Codex uses global instructions, not this Claude hook: supported commands use
+RTK, while unsupported and macOS utility commands run directly. `rtk proxy`
+remains available for recovering output, but is not mandatory.
+
+Verify the guard without opening apps or executing the sample commands:
+
+```bash
+rtk proxy python3 -B .claude/hooks/tests/test_rtk_safe.py
+```
 
 On this Mac, `~/.claude/CLAUDE.md`, `RTK.md`, `settings.json`, and `hooks` are
 already linked. Activate only missing skill links with:

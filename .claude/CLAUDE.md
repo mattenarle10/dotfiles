@@ -1,5 +1,14 @@
 @RTK.md
 
+# RTK compatibility
+
+- Use RTK only for commands it supports. Run unsupported commands directly.
+- Run macOS utilities such as `open -R`, `osascript`, `pbcopy`, and `pbpaste`
+  without RTK. Never invent `rtk open` or require `rtk proxy` for these commands.
+- The native RTK hook compresses supported commands. A separate guard rejects
+  misplaced RTK prefixes on macOS utilities and gives the raw command to retry.
+- Keep quoting, arguments, and normal approval requirements unchanged.
+
 # Git and GitHub
 
 - Never add AI attribution to commits or pull requests. No `Co-Authored-By: Claude ...`

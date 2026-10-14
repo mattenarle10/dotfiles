@@ -127,7 +127,8 @@ through `$caveman` and `$i-have-adhd` when explicitly requested.
 
 ## RTK Command Output
 
-- Prefix shell commands with `rtk` when supported, for example `rtk git status` or `rtk cargo test`. Use `rtk proxy <command>` for commands without a dedicated RTK filter.
-- Keep the prefix on each command in a chain or pipeline. Preserve shell quoting, arguments, working directories, and command approval boundaries.
+- Prefix shell commands with `rtk` only when supported, for example `rtk git status` or `rtk cargo test`. Run unsupported commands directly; `rtk proxy <command>` is optional for output recovery, not a requirement for every command.
+- Run macOS utilities such as `open -R`, `osascript`, `pbcopy`, and `pbpaste` directly. Never invent unsupported subcommands such as `rtk open`, or force wrappers onto GUI, interactive, or shell-control commands.
+- In chains and pipelines, prefix only supported commands. Preserve shell quoting, arguments, working directories, and command approval boundaries.
 - RTK condenses output to save context. Follow any recovery path shown in truncated output; use `rtk proxy <command>` when condensed output is missing necessary detail, garbled, or contradicts its exit status.
 - Use `rtk gain` to inspect savings. If RTK is unavailable, report that and run the original command; do not silently claim compression was active.
