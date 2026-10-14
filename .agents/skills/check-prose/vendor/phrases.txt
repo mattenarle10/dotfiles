@@ -1,0 +1,158 @@
+# Fixed phrases banned outright, one per line, matched case-insensitively.
+# Grammar is handled by the parse tree in check_prose.py. This file is only
+# for wordings that are wrong whatever their structure.
+
+# --- narrating my own honesty ---
+to be straight with you
+to be honest with you
+to be blunt with you
+to be frank with you
+let me be clear
+the truth is
+in all honesty
+for what it is worth
+for what it's worth
+in plain terms
+stated plainly
+stated honestly
+stated not hidden
+full transparency
+i own that
+to be fair
+candidly
+honestly
+frankly
+truthfully
+in fairness
+plainly speaking
+read that honestly
+
+# --- writing about the writing ---
+my own text
+my own prose
+my own wording
+my own sentence
+reads like a machine
+reads like an ai
+machine sound
+banned shape
+banned-shape
+
+# --- reporting on my own tooling ---
+the checker gives
+the checker gave
+the checker says
+the checker reports
+needs_judgment
+dismissed candidates
+the rule says
+the protocol says
+per the rule
+
+# --- filler transitions ---
+that said
+with that said
+that being said
+at the end of the day
+it is worth noting
+it's worth noting
+it is important to note
+it's important to note
+simply put
+to put it simply
+in essence
+needless to say
+the reality is
+the fact is
+
+# --- assistant register ---
+i'd be happy to
+i would be happy to
+great question
+let's dive in
+let me walk you through
+i hope this helps
+feel free to
+rest assured
+delve into
+as an ai
+thank you for your patience
+i appreciate your
+
+# --- slogans instead of work ---
+is always available
+is always an option
+costs nothing
+is never wrong
+there is no excuse
+that is the point
+which is the point
+
+# --- words a person would not reach for ---
+# Say the plain verb. Add it, use it, turn it on, make sure of it.
+encode
+encoded
+leverage
+utilize
+facilitate
+comprise
+constitute
+denote
+delineate
+ascertain
+
+# The user never uses this word for anything but a physical outline. Say what
+# the thing is instead.
+shape
+
+# My own stand-in for words on a page. Name the words.
+packaging
+
+# Officialese for asking a question. Ask the question.
+rule on
+your ruling
+ruling on
+decide on
+your call
+weigh in on
+sign off on
+give the go-ahead
+make a call on
+take a view on
+for your consideration
+at your discretion
+
+# A determiner that points at a kind instead of at a thing. Name the thing.
+such a
+such an
+such that
+one such
+as such
+
+# --- empty abstract predicates ---
+# The verb and the object are both abstractions, so the sentence states
+# nothing a reader can check. Say what the words do or do not do.
+carries information
+carry information
+carries no information
+conveys information
+carries meaning
+holds meaning
+carries weight
+adds value
+adds context
+provides context
+adds clarity
+provides clarity
+offers insight
+carries signal
+points to the fact
+underscores
+highlights the need
+
+# --- hedges ---
+it depends
+you may want to consider
+you might want to consider
+one could argue
+your mileage may vary

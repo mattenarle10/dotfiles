@@ -1,0 +1,159 @@
+description,form,filename,text,exit_code,findings_count,findings,stderr
+A plain sentence with a subject and a verb,,,I read the page before writing the rule.,0,0,[],
+A line that ends with no punctuation,stdin,,I named it,0,0,[],
+A message of no characters,,,,0,0,[],
+A clean sentence wrapped in quotes,,,"""I read the page before writing the rule.""",0,0,[],
+The fact as the subject and a URL as the value,,,Cited source for the document is https://www.youtube.com/watch?v=-_MwsLDQHCk,0,0,[],
+A reason reported with a that clause,,,The reason is that the parser guesses.,0,0,[],
+A problem reported with a that clause,,,The problem is that the file is gone.,0,0,[],
+A plane and the banned verb,,,The plane landed on time.,0,0,[],
+A dog really bites,,,The dog bit the courier.,0,0,[],
+A rider really rides,,,The rider rode to the depot.,0,0,[],
+A cat really sleeps,,,My cat sleeps on the desk.,0,0,[],
+A truck really travels,,,The truck travels to Cebu every Tuesday.,0,0,[],
+The plain form of the stops and targets sentence,,,Every stop and every target used that number.,0,0,[],
+An arrow really points,,,The arrow points to the file.,0,0,[],
+The plain form of the reader sentence,,,A reader cannot check that sentence.,0,0,[],
+The plain form of the failure path sentence,,,The code breaks on the failure path.,0,0,[],
+The plain form of the number sentence,,,I did not verify the number.,0,0,[],
+An imperative the model reads as a noun phrase,,,Back up the database.,0,0,[],
+A noun phrase standing alone as the whole message,,,A backup of the database.,0,0,[],
+A that clause behind a speech verb,,,She said that the file is gone.,0,0,[],
+A that clause behind a claim,,,I use that adverb to claim that I was honest.,0,0,[],
+The plain form of the increase sentence,,,Only one account gets every increase.,0,0,[],
+A real mover with real cargo,,,The truck carried the cargo to Cebu.,0,0,[],
+The plain form of the quota code sentence,,,We never picked a quota code for the netmask quota.,0,0,[],
+A table that needs something rather than carrying it,,,The table needs one.,0,0,[],
+The plain form of the Network PROD sentence,,,This can be verified from Network PROD.,0,0,[],
+A person who settles something real,,,I settled the invoice on Monday.,0,0,[],
+The plain form of the stakeholder order,,,He told me to use the sizes in the design document.,0,0,[],
+The plain form of the refusal sentence,,,"If Support refuses, change the document.",0,0,[],
+An instruction that a person really gives,,,She gave me this instruction: use the sizes in the design document.,0,0,[],
+A precondition that really fails,,,The plan-time precondition in ipam.tf fails today.,0,0,[],
+The plain form of the only flag sentence,,,The script never prints it when you use --only.,0,0,[],
+A command that really prints,,,The command prints one finding per line.,0,0,[],
+A person who really ran something,,,I ran the suite twice today.,0,0,[],
+The plain form of the runbook sentence,,,You create the L1 OUs by hand before you run org-ous.,0,0,[],
+The plain form of the naming sentence,,,Their names are in NS 280.,0,0,[],
+A script that really creates a file,,,The script creates the report file.,0,0,[],
+A plain object behind needs,,,The suite needs a new row.,0,0,[],
+A plain object behind deserves,,,The report deserves a second look.,0,0,[],
+The plain form of the weaknesses sentence,,,This measurement is weak in three ways.,0,0,[],
+A real placement with a real object,,,I put the file on the desk.,0,0,[],
+A measured comparison,,,Tuesday was colder than Monday.,0,0,[],
+A real smell of a real thing,,,You smelled the smoke.,0,0,[],
+A body part on a person,,,I have two hands.,0,0,[],
+An ordinary indefinite with an ordinary adjective,,,The doctor gave me something hot to drink.,0,0,[],
+Two different things joined by and,,,He bought a book and a pen.,0,0,[],
+A person who really buys,,,I bought the book on Monday.,0,0,[],
+A person who really pays,,,She paid the invoice today.,0,0,[],
+A price that a trip really costs,,,The trip cost 500 pesos.,0,0,[],
+Two compound nouns that share a head,,,"A chat message keeps only the lines that end in a period, a question mark, an exclamation mark, or a colon.",0,0,[],
+Two more compound nouns that share a head,,,"A document keeps every line of prose, and the reader strips fenced code, headings, tables, list markers, and bold markers first.",0,0,[],
+Three exit codes in a row,,,Exit code 0 means clean. Exit code 1 means at least one line of output. Exit code 2 means the command could not read its input.,0,0,[],
+The count in place of the repeated pair,,,Each mode has two tables.,0,0,[],
+Three sentences with three different openings,,,I read the page first. The default is 14 bars. You can run the suite yourself.,0,0,[],
+The default read from the page,,,"I read the page, and the default is 14 bars.",0,0,[],
+The plain form of the two numbers sentence,,,I invented both numbers.,0,0,[],
+A because tail with a named subject,,,"I stopped the run, because the suite was red.",0,0,[],
+A because tail about the hour,,,He left because it was late.,0,0,[],
+A body part on an animal,,,My cat has green eyes.,0,0,[],
+A real gift to a person,,,The doctor gave the child a pair of glasses.,0,0,[],
+A real object handed to a person,,,She gave me the key.,0,0,[],
+A reader who reads,,,You read the second paragraph.,0,0,[],
+A part with a real number,,,The part number is 4021.,0,0,[],
+The plain form of the smelled sentence,,,I quoted your objection here: the flag is required.,0,0,[],
+A comparison between two people,,,She is better at this than I am.,0,0,[],
+The plain form of the ADX sentence,,,I read the page and then wrote 25 in my own document.,0,0,[],
+Two numbers in place of a grade,,,"Your ratio is 0.080, and the median of your history is 0.182.",0,0,[],
+A real placement of a pronoun,,,I put it in the scratchpad.,0,0,[],
+The real idiom with a real object,,,She put a name to the face.,0,0,[],
+A permission that a person really gives a process,,,I let the process run overnight.,0,0,[],
+The plain form of the word sentence,,,I asked you for the name of that column.,0,0,[],
+A clean paragraph,document,doc.md,I read the page before writing the rule.,0,0,[],
+A table separator row,document,doc.md,"| one | two |
+| --- | --- |",0,0,[],
+A text file with no extension,document,notes,I read the page before writing the rule.,0,0,[],
+Two paragraphs with nothing between them,document,doc.md,"I ran two commands.
+
+The suite passed.",0,0,[],
+A fenced block between two paragraphs,document,doc.md,"I ran two commands:
+
+```
+some code
+```
+
+The suite passed.",0,0,[],
+A heading between two paragraphs,document,doc.md,"I ran two commands:
+
+# Some heading
+
+The suite passed.",0,0,[],
+A table row between two paragraphs,document,doc.md,"I ran two commands:
+
+| a | b |
+
+The suite passed.",0,0,[],
+A fenced block at the start of the document,document,doc.md,"```
+some code
+```
+
+The suite passed.",0,0,[],
+A fenced block at the end of the document,document,doc.md,"The suite passed.
+
+```
+some code
+```",0,0,[],
+A clean line comment,source,mod.py,# I read the page before writing the rule.,0,0,[],
+A short comment that names a thing,source,mod.py,# helpers for the parser,0,0,[],
+A fenced example inside a docstring,source,mod.py,"def helper():
+    '''The flag.
+
+    I quote the sentence he rejected here:
+
+    ```
+    The docs say the flag is required.
+    ```
+    '''",0,0,[],
+A noun phrase as the first line of a docstring,source,mod.py,"def helper():
+    '''The prose of a file, whatever kind of file it is.'''",0,0,[],
+A noun phrase heading above a clean docstring body,source,mod.py,"def helper():
+    '''The prose of a file.
+
+    I read the file, and I return its prose.
+    '''",0,0,[],
+A source file with no comment at all,source,mod.py,x = 1,0,0,[],
+Code outside a comment is never judged,source,mod.py,names = it,0,0,[],
+The replacement inside the do-er message,,,I decided the cutoff.,0,0,[],
+The replacement inside the pointer message,,,"You read 80,095.90 off the chart.",0,0,[],
+A person reaching something,,,I reached the fourth page.,0,0,[],
+A definite article with the value given,,,"The exact value is 80,095.90.",0,0,[],
+A plain noun phrase as a heading,document,doc.md,## Commands,0,0,[],
+A heading with a person in front of the verb,document,doc.md,## He reads the words with his eyes,0,0,[],
+A heading above a clean paragraph,document,doc.md,"## Commands
+
+I read the page before writing the rule.",0,0,[],
+Two plain pronouns with no negation,,,They carry it for him.,0,0,[],
+A named thing in the object slot,,,I put the fragment in the middle of your paragraph.,0,0,[],
+A named value behind the command,,,"The command printed 79,412.00.",0,0,[],
+A named reader and a named number,,,"I gave the reader 79,412.00.",0,0,[],
+A tail that names a new thing,,,"I ran the suite twice, and I found one more row in the second run.",0,0,[],
+The replacement inside the tail message,,,Three older rows print a second message now.,0,0,[],
+The replacement inside the handover message,,,"The measurement is 80,095.90.",0,0,[],
+A coordinator between two quoted sentences,,,"The user kept ""The suite passed"" and ""Exit code 0 means clean"" on 2026-09-23.",0,0,[],
+A coordinator that joins two nouns,,,"He bought a book, a pen, and a folder.",0,0,[],
+A person carried by a plane,,,The plane brought me to Manila.,0,0,[],
+A boat and the banned verb,,,The boat landed at dawn.,0,0,[],
+The replacement inside the pronoun message,,,I named the column.,0,0,[],
+The manual example of three colours,,,"The flag was red, white, and blue.",0,0,[],
+The manual example of three animals,,,"He counted horses, mules, and cattle.",0,0,[],
+The manual example with a coordinator in every gap,,,He counted horses and mules and cattle.,0,0,[],
+The manual example of three phrases,,,"He sold the cloth by the bolt, by the yard, or in remnants.",0,0,[],
+The manual example with neither and nor,,,"Neither snow, rain, nor heat stopped the courier.",0,0,[],
+The manual example of a series inside a compound sentence,,,"Fish, mollusks, and crustaceans were plentiful in the lakes, and turtles frequented the shores.",0,0,[],
+The manual example of two clauses with the comma,,,"The boy went home alone, and his sister remained with the crowd.",0,0,[],
+His callout with his comma in it,,,"Close above the top line, and you are bullish from then on.",0,0,[],
+His pair of items with no comma,,,You take its high and its low.,0,0,[],
+The replacement in the message for an owed act,,,Which of these two rows do you want?,0,0,[],
+The replacement in the message for a non-actor,,,The app shows the symbol.,0,0,[],
+The replacement in the message for a denial on the object,,,Every term of the old file is in the new file.,0,0,[],

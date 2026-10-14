@@ -9,8 +9,8 @@ Personal configuration files for zsh, nvim, Claude Code, Codex, and other tools.
 - **lazygit**: Git TUI config — actually running [`lazygitrs`](https://github.com/Blankeos/lazygitrs) (Rust fork by Blankeos) behind a `~/.local/bin/lazygit` wrapper. Faster startup, AI commit generation, nicer diffs. `install.sh` now trusts the package postinstall so the real binary is downloaded, while the UI still reads the shared config file (`.config/lazygit/config.yml`)
 - **ghostty**: Terminal emulator — transparency, blur, font, keybinds, tab behavior (`.config/ghostty/`)
 - **Zed**: Fast GUI editor with Vim mode and Codex ACP (`.config/zed/settings.json`)
-- **Claude Code**: Global settings, plugins (expo, vercel, playwright, context7, etc.), RTK hook, Caveman + ADHD response guidance and skills, and instructions (`.claude/`, `.agents/skills/`)
-- **Codex**: Global defaults, RTK command output, Caveman + ADHD response guidance and skills, trusted project paths, OpenAI docs MCP, and GitHub plugin settings (`.codex/`, `.agents/skills/`)
+- **Claude Code**: Global settings, plugins (expo, vercel, playwright, context7, etc.), RTK hook, Caveman + ADHD response guidance, local prose-checking skill, and instructions (`.claude/`, `.agents/skills/`)
+- **Codex**: Global defaults, RTK command output, Caveman + ADHD response guidance, local prose-checking skill, trusted project paths, OpenAI docs MCP, and GitHub plugin settings (`.codex/`, `.agents/skills/`)
 
 **📖 New to Nvim config?** Check out [NVIM_GUIDE.md](NVIM_GUIDE.md) for a step-by-step learning path!
 
@@ -64,6 +64,8 @@ The `install.sh` script automatically installs and configures:
 # ~/.codex/bedrock.config.toml -> ~/.dotfiles/.codex/bedrock.config.toml
 # ~/.agents/skills/caveman -> ~/.dotfiles/.agents/skills/caveman
 # ~/.agents/skills/i-have-adhd -> ~/.dotfiles/.agents/skills/i-have-adhd
+# ~/.agents/skills/check-prose -> ~/.dotfiles/.agents/skills/check-prose
+# ~/.claude/skills/check-prose -> ~/.dotfiles/.claude/skills/check-prose  # -> .agents/skills/check-prose
 # ~/AGENTS.md -> ~/.dotfiles/AGENTS.md  # dotfiles-repo guidance only
 # etc.
 ```
@@ -161,6 +163,57 @@ Reload after changes:
   `~/.claude/skills` did not exist when the session started.
 - Hook edits in `settings.json` are picked up automatically. Review them with
   `/hooks`.
+
+### AI English Checker
+
+The shared `check-prose` skill integrates
+[dlord/ai-english-checker](https://github.com/dlord/ai-english-checker), pinned at
+`4eb517b42f03d2cfedded6d3a1fa8e425e991cf1`. Its unmodified source, tests,
+requirements, and GPL-3.0 licence are in `.agents/skills/check-prose/vendor/`.
+Both agents can select it for a prose-checking request. Invoke it directly with
+`$check-prose` in Codex or `/check-prose` in Claude Code.
+
+This is an on-request check, not a reply-blocking hook. RTK, Caveman, ADHD,
+model settings, and existing hooks are unchanged. Findings are advisory, not
+proof of AI authorship. Checking does not edit files; ask explicitly for a
+rewrite. Rewrites stop after three passes or sooner if accuracy is at risk.
+
+Activate only missing links; these commands fail rather than replace targets:
+
+```bash
+ln -s ~/.dotfiles/.agents/skills/check-prose ~/.agents/skills/check-prose
+ln -s ../../.dotfiles/.claude/skills/check-prose ~/.claude/skills/check-prose
+bash ~/.agents/skills/check-prose/scripts/install.sh
+```
+
+The installer needs `uv` and downloads Python 3.13 if necessary, pinned Python
+dependencies, the spaCy English model, and NLTK WordNet. Runtime files live in
+`${XDG_DATA_HOME:-$HOME/.local/share}/ai-english-checker`, not in Git or stowed
+config. Ordinary checks run locally without sending prose to an external API.
+
+Check a document directly from any directory:
+
+```bash
+rtk proxy bash ~/.agents/skills/check-prose/scripts/check-prose.sh notes.md
+```
+
+Exit `0` means no findings, `1` means findings, and `2` means an error.
+For source comments/docstrings, pass `--path file.py file.py`. Standard input
+checks only lines with final sentence punctuation; use a document file to
+check a complete draft. Codex normally refreshes skills automatically; restart
+either agent if the new skill is not listed. Review upstream changes before
+updating the snapshot or rerunning installation with new requirements.
+
+Launcher regression checks (after installation):
+
+```bash
+rtk proxy python3 -B .agents/skills/check-prose/tests/test_launcher.py
+```
+
+Our launcher uses strict UTF-8 for piped text so malformed input returns an
+error instead of a misleading clean result. The upstream checker remains
+unmodified. Its README examples are illustrative; use the actual findings
+rather than depending on an example's exact rule wording.
 
 ### After install
 

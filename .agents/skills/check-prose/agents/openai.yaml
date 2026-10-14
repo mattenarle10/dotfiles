@@ -1,0 +1,4 @@
+interface:
+  display_name: "Check Prose"
+  short_description: "Check prose for AI-style English locally"
+  default_prompt: "Use $check-prose to check this draft for AI-style wording and report the findings without editing it."
